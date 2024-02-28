@@ -1,0 +1,15 @@
+@layer components {
+  .card__container {
+    @apply w-[220px] h-[340px] relative 
+    border-2 border-light rounded-xl 
+    overflow-hidden;
+  }
+
+  .card__image {
+    @apply w-full h-full object-cover;
+  }
+
+  .card__name {
+    @apply w-full h-10 text-light bg-dark;
+  }
+}
