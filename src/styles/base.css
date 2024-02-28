@@ -30,7 +30,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    @apply bg-semi-dark text-base font-myPlay text-light;
+    @apply bg-dark text-base font-myPlay text-light;
   }
 
   .section {
