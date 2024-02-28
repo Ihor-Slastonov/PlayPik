@@ -16,6 +16,7 @@ export default {
       'semi-dark': '#393E46',
       accent: '#FFD369',
       light: '#EEEEEE',
+      tr_dark: 'rgba(0,0,0,0.5)',
     },
 
     fontFamily: {

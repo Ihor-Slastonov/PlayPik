@@ -1,16 +1,12 @@
-import Card from '../components/CardList/Card';
 import games from '../../games.json';
+import CardList from '../components/CardList/CardList';
 
 const Home = () => {
   return (
     <main>
       <section className="section">
         <div className="container">
-          <ul className="flex items-center gap-4">
-            {games.map(game => (
-              <Card key={game.id} imgURL={game.imgURL} title={game.title} />
-            ))}
-          </ul>
+          <CardList games={games} />
         </div>
       </section>
     </main>
