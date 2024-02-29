@@ -10,7 +10,7 @@
     @apply w-full h-full object-cover;
   }
 
-  .card__name {
+  .card__title {
     @apply absolute bottom-0 
     w-full h-10
     flex items-center justify-center 

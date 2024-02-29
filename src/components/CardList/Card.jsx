@@ -4,7 +4,7 @@ const Card = ({ imgURL, title }) => {
   return (
     <li className="card__container">
       <img className="card__image" src={imgURL} alt={title} />
-      <p className="card__name">{title}</p>
+      <p className="card__title">{title}</p>
     </li>
   );
 };

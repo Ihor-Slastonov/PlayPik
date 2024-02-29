@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import games from '../../games.json';
 import CardList from '../components/CardList/CardList';
-import Modal from '../components/Modal';
+import Modal from '../components/Modal/Modal';
 
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
