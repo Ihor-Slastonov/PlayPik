@@ -1,0 +1,27 @@
+@layer components {
+  .form {
+    @apply w-[240px] flex flex-col gap-8;
+  }
+
+  .form__label {
+    @apply text-lg mb-1;
+  }
+
+  .form__label-file {
+    @apply flex items-center justify-center
+    px-8 py-1 text-lg text-semi-dark
+    border-2 border-semi-dark rounded-md
+    cursor-pointer
+  hover:border-accent hover:text-accent duration-500;
+  }
+
+  .form__input {
+    @apply p-2 w-full
+    bg-dark border-2 border-semi-dark rounded-md 
+    hover:border-light duration-500 outline-none;
+  }
+
+  .form__error {
+    @apply absolute -bottom-4 left-0 text-red-600 text-xs;
+  }
+}

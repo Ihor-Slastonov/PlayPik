@@ -32,7 +32,7 @@ const Modal = ({ isOpen, closeModal, children }) => {
   };
 
   return (
-    <Portal>
+    <Portal containerId="modal">
       <AnimatePresence>
         {isOpen && (
           <motion.div

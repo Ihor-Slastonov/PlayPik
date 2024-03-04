@@ -2,6 +2,7 @@ import { useState } from 'react';
 import games from '../../games.json';
 import CardList from '../components/CardList/CardList';
 import Modal from '../components/Modal/Modal';
+import AddGame from '../components/AddGame/AddGame';
 
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +14,9 @@ const Home = () => {
       <section className="section">
         <div className="container">
           <CardList games={games} toogleModal={toogleModal} />
-          <Modal isOpen={isOpen} closeModal={toogleModal} />
+          <Modal isOpen={isOpen} closeModal={toogleModal}>
+            <AddGame />
+          </Modal>
         </div>
       </section>
     </main>

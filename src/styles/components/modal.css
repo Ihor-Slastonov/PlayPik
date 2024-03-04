@@ -6,7 +6,7 @@
   }
 
   .modal__layout {
-    @apply min-w-[400px] min-h-[400px] p-4 
+    @apply p-6
           absolute top-1/2 left-1/2 
           -translate-x-1/2 -translate-y-1/2
           bg-dark rounded-xl shadow-2xl;
