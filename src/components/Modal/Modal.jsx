@@ -7,7 +7,7 @@ import ModalCloseBtn from './ModalCloseBtn';
 
 import { modalVariants } from '../../utils/constans/animation';
 
-const Modal = ({ isOpen, closeModal, children }) => {
+const Modal = ({ containerId, isOpen, closeModal, children }) => {
   useEffect(() => {
     if (isOpen) {
       const scrollBarWidth =
@@ -32,7 +32,7 @@ const Modal = ({ isOpen, closeModal, children }) => {
   };
 
   return (
-    <Portal containerId="modal">
+    <Portal containerId={containerId}>
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -42,7 +42,7 @@ const Modal = ({ isOpen, closeModal, children }) => {
             transition={{ duration: 0.3 }}
             variants={modalVariants}
             onClick={handleBackdropClick}
-            className="modal__backdrop"
+            className="modal__backdrop z-20"
           >
             <motion.div
               initial="hidden"
@@ -66,6 +66,7 @@ const Modal = ({ isOpen, closeModal, children }) => {
 export default Modal;
 
 Modal.propTypes = {
+  containerId: PropTypes.string.isRequired,
   isOpen: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
   children: PropTypes.node,

@@ -3,6 +3,7 @@ import games from '../../games.json';
 import CardList from '../components/CardList/CardList';
 import Modal from '../components/Modal/Modal';
 import AddGame from '../components/AddGame/AddGame';
+import PickGame from '../components/PickGame/PickGame';
 
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,8 +14,13 @@ const Home = () => {
     <main>
       <section className="section">
         <div className="container">
+          <PickGame />
           <CardList games={games} toogleModal={toogleModal} />
-          <Modal isOpen={isOpen} closeModal={toogleModal}>
+          <Modal
+            containerId="modal_addGameForm"
+            isOpen={isOpen}
+            closeModal={toogleModal}
+          >
             <AddGame />
           </Modal>
         </div>
