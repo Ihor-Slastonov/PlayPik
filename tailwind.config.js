@@ -10,11 +10,12 @@ export default {
     colors: {
       black: colors.black,
       white: colors.white,
-      red: colors.red,
 
       dark: '#222831',
       'semi-dark': '#393E46',
       accent: '#FFD369',
+      accent_green: '#03C988',
+      accent_red: '#E94560',
       light: '#EEEEEE',
       tr_dark: 'rgba(0,0,0,0.5)',
     },
