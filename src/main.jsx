@@ -8,7 +8,7 @@ import './styles/index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename="/PlayPik/">
+    <BrowserRouter>
       <App />
     </BrowserRouter>
   </React.StrictMode>
