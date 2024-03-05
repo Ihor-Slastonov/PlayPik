@@ -32,13 +32,14 @@ const AddGameForm = ({ setPreviewImage }) => {
       {({ setFieldValue, errors, touched, isSubmitting }) => (
         <Form className="form">
           <div className="relative">
+            <p className="form__label">Choose image</p>
             <label
               htmlFor="file"
               className={`form__label-file
-            ${errors.imgURL ? 'border-red-500' : ''}
-             ${!errors.imgURL && touched.imgURL ? 'border-accent' : ''}`}
+            ${errors.imgURL ? 'border-accent_red' : ''}
+             ${!errors.imgURL && touched.imgURL ? 'border-accent_green' : ''}`}
             >
-              Choose image
+              Select image
             </label>
 
             <Field
@@ -62,8 +63,8 @@ const AddGameForm = ({ setPreviewImage }) => {
             <Field
               name="title"
               type="text"
-              className={`form__input ${errors.title ? 'border-red-500' : ''}
-             ${!errors.title && touched.title ? 'border-accent' : ''}`}
+              className={`form__input ${errors.title ? 'border-accent_red' : ''}
+             ${!errors.title && touched.title ? 'border-accent_green' : ''}`}
               id="title"
             />
             <ErrorMessage
@@ -73,7 +74,18 @@ const AddGameForm = ({ setPreviewImage }) => {
             />
           </div>
 
-          <button type="submit" disabled={isSubmitting}>
+          <button
+            type="submit"
+            disabled={errors.title || errors.imgURL}
+            className={`px-8 py-4 text-xl border border-semi-dark hover:border-light duration-500
+            ${errors.title && errors.imgURL ? 'border-accent_red hover:border-accent_red' : ''}
+            ${
+              !errors.title && touched.title && !errors.imgURL && touched.imgURL
+                ? 'border-accent_green hover:border-accent_green hover:text-accent_green'
+                : ''
+            }
+           disabled:border-accent_red`}
+          >
             {isSubmitting ? 'Submiting' : 'Submit'}
           </button>
         </Form>
