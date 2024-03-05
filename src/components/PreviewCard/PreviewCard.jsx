@@ -8,6 +8,8 @@ const PreviewCard = ({ imgURL }) => {
           className="card__image"
           src="https://placehold.co/220x340/222831/393E46/png?text=Preview\nImage+size+240+X+320"
           alt="preview"
+          width={240}
+          height={320}
         />
       ) : (
         <img className="card__container" src={imgURL} alt="preview" />
