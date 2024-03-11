@@ -5,6 +5,7 @@ import { uploadImage } from '../imgLoadApi/uploadImage';
 import { getData, postData } from './fetchData';
 import * as Yup from 'yup';
 import { GAMES_KEY } from '../../utils/constans/storageKeys';
+import { updateStoredData } from '../../utils/storage';
 
 /**
  * Fetch all games from the DB
@@ -22,7 +23,10 @@ export const getAllGames = async () => {
 
   const storedGames = sessionStorage.getItem(GAMES_KEY, {});
   // if there stored data return it
-  if (storedGames) return JSON.parse(storedGames);
+  if (storedGames) {
+    toast('data loaded from sessionStorage');
+    return JSON.parse(storedGames);
+  }
   // otherwise fetch all games and stored it
 
   const gamesData = await fetchAllGames();
@@ -30,6 +34,8 @@ export const getAllGames = async () => {
   if (gamesData) {
     sessionStorage.setItem(GAMES_KEY, JSON.stringify(gamesData));
   }
+
+  toast('data loaded from server');
 
   return gamesData;
 };
@@ -66,4 +72,12 @@ export const addGame = async (imageFile, formValues) => {
   } finally {
     toast.success('Game added successfully');
   }
+};
+
+export const addGameAndUpdateLocalGames = async (imageFile, formValues) => {
+  // add new game to data base
+  const newGame = await addGame(imageFile, formValues);
+  if (!newGame) return;
+  const updatedData = updateStoredData(GAMES_KEY, newGame);
+  return updatedData;
 };

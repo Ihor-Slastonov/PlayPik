@@ -12,7 +12,7 @@ const PreviewCard = ({ imgURL }) => {
           height={320}
         />
       ) : (
-        <img className="card__container" src={imgURL} alt="preview" />
+        <img className="card__image" src={imgURL} alt="preview" />
       )}
     </div>
   );

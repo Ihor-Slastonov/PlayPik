@@ -5,10 +5,12 @@ import { addGameFormInitialValues } from '../../utils/constans/initialValues';
 import { addGameYupSchema } from '../../utils/validate/addGameSchema';
 import { useState } from 'react';
 
-import { addGame } from '../../services/playpikApi/games';
+import { addGameAndUpdateLocalGames } from '../../services/playpikApi/games';
+import { usePlayPik } from '../../utils/hooks/usePlayPik';
 
 const AddGameForm = ({ setPreviewImage }) => {
   const [imageFile, setImageFile] = useState(null);
+  const { setGames } = usePlayPik();
 
   const handleChange = setFieldValue => e => {
     const file = e.target.files[0];
@@ -22,7 +24,8 @@ const AddGameForm = ({ setPreviewImage }) => {
       initialValues={addGameFormInitialValues}
       validationSchema={addGameYupSchema}
       onSubmit={async (values, { setSubmitting, resetForm }) => {
-        await addGame(imageFile, values);
+        const updatesData = await addGameAndUpdateLocalGames(imageFile, values);
+        setGames(updatesData);
         setSubmitting(false);
         resetForm();
         setPreviewImage(null);
