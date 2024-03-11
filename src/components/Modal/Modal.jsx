@@ -7,7 +7,13 @@ import ModalCloseBtn from './ModalCloseBtn';
 
 import { modalVariants } from '../../utils/constans/animation';
 
-const Modal = ({ containerId, isOpen, closeModal, children }) => {
+const Modal = ({
+  containerId,
+  isOpen,
+  closeModal,
+  isCloseBtn = true,
+  children,
+}) => {
   useEffect(() => {
     if (isOpen) {
       const scrollBarWidth =
@@ -52,7 +58,7 @@ const Modal = ({ containerId, isOpen, closeModal, children }) => {
               variants={modalVariants}
               className="modal__layout"
             >
-              <ModalCloseBtn closeModal={closeModal} />
+              {isCloseBtn && <ModalCloseBtn closeModal={closeModal} />}
 
               {children}
             </motion.div>
@@ -69,5 +75,6 @@ Modal.propTypes = {
   containerId: PropTypes.string.isRequired,
   isOpen: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
+  isCloseBtn: PropTypes.bool,
   children: PropTypes.node,
 };
