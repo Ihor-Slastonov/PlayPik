@@ -10,6 +10,8 @@ export default {
     colors: {
       black: colors.black,
       white: colors.white,
+      blue: colors.blue,
+      cyan: colors.cyan,
 
       dark: '#222831',
       'semi-dark': '#393E46',
@@ -23,7 +25,11 @@ export default {
     fontFamily: {
       myPlay: ['MyPlay', 'sans-serif'],
     },
-    extend: {},
+    extend: {
+      boxShadow: {
+        center: '0px 0px 20px 4px #000000',
+      },
+    },
   },
   plugins: [],
 };

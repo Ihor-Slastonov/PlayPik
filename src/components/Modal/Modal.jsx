@@ -11,7 +11,7 @@ const Modal = ({
   containerId,
   isOpen,
   closeModal,
-  isCloseBtn = true,
+  modalLayout = true,
   children,
 }) => {
   useEffect(() => {
@@ -50,18 +50,22 @@ const Modal = ({
             onClick={handleBackdropClick}
             className="modal__backdrop z-20"
           >
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
-              transition={{ duration: 0.3 }}
-              variants={modalVariants}
-              className="modal__layout"
-            >
-              {isCloseBtn && <ModalCloseBtn closeModal={closeModal} />}
+            {modalLayout ? (
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+                transition={{ duration: 0.3 }}
+                variants={modalVariants}
+                className="modal__layout"
+              >
+                <ModalCloseBtn closeModal={closeModal} />
 
-              {children}
-            </motion.div>
+                {children}
+              </motion.div>
+            ) : (
+              <>{children}</>
+            )}
           </motion.div>
         )}
       </AnimatePresence>
@@ -75,6 +79,6 @@ Modal.propTypes = {
   containerId: PropTypes.string.isRequired,
   isOpen: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
-  isCloseBtn: PropTypes.bool,
+  modalLayout: PropTypes.bool,
   children: PropTypes.node,
 };

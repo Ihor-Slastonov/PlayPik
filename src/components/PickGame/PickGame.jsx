@@ -1,23 +1,27 @@
 import { useState } from 'react';
 
 import useCountdownTimer from '../../utils/hooks/useCountdownTimer';
-import Modal from '../Modal/Modal';
 
-import openSound from '../../assets/sound/atmosfernyiy.mp3';
-import PreviewCard from '../PreviewCard/PreviewCard';
+import Modal from '../Modal/Modal';
+import { usePlayPik } from '../../utils/hooks/usePlayPik';
+import PickGameCard from './PickGameCard';
+import { pickGame } from '../../utils/pickGame';
 
 const PickGame = () => {
+  const [randomGame, setRandomGame] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const { startTimer, resetTimer, countdown } = useCountdownTimer(3, 1000);
+  const { games } = usePlayPik();
 
-  const playModalOpenSound = () => {
-    const audio = new Audio(openSound);
-    audio.play();
+  const pickRandomGame = () => {
+    const pickedGame = pickGame(games);
+    setRandomGame(pickedGame);
   };
+
   const handleClick = () => {
+    pickRandomGame();
     setIsOpen(true);
     startTimer();
-    setTimeout(playModalOpenSound, 2500);
   };
 
   const handleClose = () => {
@@ -42,29 +46,13 @@ const PickGame = () => {
         containerId="modal_playPick"
         isOpen={isOpen}
         closeModal={handleClose}
-        isCloseBtn={false}
+        modalLayout={false}
       >
-        <div
-          className="relative border w-[500px] h-[500px] 
-                bg-[url('../../assets/border.png')]
-                bg-no-repeat  bg-cover bg-center"
-        ></div>
-
-        {countdown > 0 && (
-          <p
-            className="absolute top-[140px] left-[200px]
-                     animate-bounce flex items-center justify-center h-[220px] text-[300px] font-bold "
-          >
-            {countdown}
-          </p>
-        )}
-
-        <div
-          className={`absolute top-[100px] left-[170px] -z-10 
-              duration-500 ${countdown > 0 ? 'opacity-0' : 'opacity-100'}`}
-        >
-          <PreviewCard imgURL="https://i.ibb.co/3v5JZdX/phasmophobia.jpg" />
-        </div>
+        <PickGameCard
+          handleClose={handleClose}
+          game={randomGame}
+          countdown={countdown}
+        />
       </Modal>
     </>
   );

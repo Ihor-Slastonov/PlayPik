@@ -10,9 +10,8 @@ const useCountdownTimer = (initialValues, interval) => {
       setCountdown(prev => {
         if (prev === 1) {
           clearInterval(timerId);
-          return console.log(timerId);
+          return;
         }
-        console.log(prev);
         return prev - 1;
       });
     }, interval);
