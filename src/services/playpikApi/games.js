@@ -1,5 +1,5 @@
 import toast from 'react-hot-toast';
-import { GAMES_URL } from '../../utils/constans/urls';
+import { GAMES_URL, gameImgPlaceholder } from '../../utils/constans/urls';
 import { addGameValidationSchema } from '../../utils/validate/addGameSchema';
 import { uploadImage } from '../imgLoadApi/uploadImage';
 import { getData, postData } from './fetchData';
@@ -43,11 +43,17 @@ export const getAllGames = async () => {
 // Add new game to DB
 export const addGame = async (imageFile, formValues) => {
   try {
+    let imgURL;
     const { title, rating, category, type } = formValues; //get only fileds that we need
 
-    // Send image file to store it and get image url response
-    const imgURL = await uploadImage(imageFile);
-    if (!imgURL) return;
+    //Check if no image then will set the default image.
+    //  Send image file to store it and get image url response
+    if (imageFile === null) {
+      imgURL = gameImgPlaceholder;
+    } else {
+      imgURL = await uploadImage(imageFile);
+      if (!imgURL) return;
+    }
 
     const dataToSend = {
       imgURL,

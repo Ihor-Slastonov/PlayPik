@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { addGameAndUpdateLocalGames } from '../../services/playpikApi/games';
 import { usePlayPik } from '../../utils/hooks/usePlayPik';
 import { gameCategories } from '../../utils/constans/gameValuse';
+import { gameImgPlaceholder } from '../../utils/constans/urls';
 
 const AddGameForm = ({ setPreviewImage }) => {
   const [imageFile, setImageFile] = useState(null);
@@ -18,6 +19,10 @@ const AddGameForm = ({ setPreviewImage }) => {
     setImageFile(file);
     setPreviewImage(URL.createObjectURL(file));
     setFieldValue('imgURL', file.name);
+  };
+
+  const handleNoImageClick = setFieldValue => () => {
+    setFieldValue('imgURL', gameImgPlaceholder);
   };
 
   return (
@@ -35,6 +40,7 @@ const AddGameForm = ({ setPreviewImage }) => {
     >
       {({ setFieldValue, errors, touched, isSubmitting }) => (
         <Form className="form">
+          {/* Select image */}
           <div className="relative">
             <p className="form__label">Choose game image</p>
             <label
@@ -45,6 +51,10 @@ const AddGameForm = ({ setPreviewImage }) => {
             >
               Select image
             </label>
+
+            <button type="button" onClick={handleNoImageClick(setFieldValue)}>
+              No image
+            </button>
 
             <Field
               name="file"
@@ -114,7 +124,7 @@ const AddGameForm = ({ setPreviewImage }) => {
               name="category"
               as="select"
               className={`form__input ${errors.category ? 'border-accent_red' : ''}
-             ${!errors.category && touched.category ? 'border-accent_green' : ''}`}
+             ${!errors.category && touched.category ? 'border-accent_green' : ''} cursor-pointer`}
               id="category"
             >
               {gameCategories.map(game => (
