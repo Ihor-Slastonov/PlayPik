@@ -1,4 +1,5 @@
 import * as Yup from 'yup';
+import { gameCategories, gameTypes } from '../constans/gameValuse';
 
 export const addGameYupSchema = Yup.object({
   title: Yup.string()
@@ -6,6 +7,10 @@ export const addGameYupSchema = Yup.object({
     .max(15, 'Must be 15 characters or less')
     .required('Required'),
   imgURL: Yup.string().required('Required'),
+  category: Yup.string()
+    .oneOf(gameCategories, 'Invalid category')
+    .required('Required'),
+  type: Yup.string().oneOf(gameTypes, 'Invalid type').required('Required'),
 });
 
 export const addGameValidationSchema = Yup.object().shape({
@@ -15,4 +20,8 @@ export const addGameValidationSchema = Yup.object().shape({
     .required('Rating is required')
     .min(0, 'Rating must be greater than or equal to 0')
     .integer('Rating must be an integer'),
+  category: Yup.string()
+    .oneOf(gameCategories, 'Invalid category')
+    .required('Required'),
+  type: Yup.string().oneOf(gameTypes, 'Invalid type').required('Required'),
 });
