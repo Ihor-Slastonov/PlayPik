@@ -43,7 +43,7 @@ export const getAllGames = async () => {
 // Add new game to DB
 export const addGame = async (imageFile, formValues) => {
   try {
-    const { title, rating } = formValues; //get only fileds that we need
+    const { title, rating, category, type } = formValues; //get only fileds that we need
 
     // Send image file to store it and get image url response
     const imgURL = await uploadImage(imageFile);
@@ -53,6 +53,8 @@ export const addGame = async (imageFile, formValues) => {
       imgURL,
       title,
       rating,
+      category,
+      type,
     };
 
     await addGameValidationSchema.validate(dataToSend, { abortEarly: false });
