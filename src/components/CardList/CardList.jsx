@@ -7,7 +7,12 @@ const CardList = ({ games, toogleModal }) => {
   return (
     <ul className="flex flex-wrap items-center gap-4">
       {games?.map(game => (
-        <Card key={game.id} imgURL={game.imgURL} title={game.title} />
+        <Card
+          key={game.id}
+          imgURL={game.imgURL}
+          title={game.title}
+          category={game.category}
+        />
       ))}
 
       <AddCardBtn toogleModal={toogleModal} />
