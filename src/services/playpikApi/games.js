@@ -1,11 +1,11 @@
 import toast from 'react-hot-toast';
-import { GAMES_URL, gameImgPlaceholder } from '../../utils/constans/urls';
+import { GAMES_URL } from '../../utils/constans/urls';
 import { addGameValidationSchema } from '../../utils/validate/addGameSchema';
 import { uploadImage } from '../imgLoadApi/uploadImage';
-import { getData, postData } from './fetchData';
+import { deleteData, getData, postData } from './fetchData';
 import * as Yup from 'yup';
 import { GAMES_KEY } from '../../utils/constans/storageKeys';
-import { updateStoredData } from '../../utils/storage';
+import { deleteFromStoreData, updateStoredData } from '../../utils/storage';
 
 /**
  * Fetch all games from the DB
@@ -44,15 +44,18 @@ export const getAllGames = async () => {
 export const addGame = async (imageFile, formValues) => {
   try {
     let imgURL;
+    let delete_imgURL;
     const { title, rating, category, type } = formValues; //get only fileds that we need
 
     //Check if no image then will set the default image.
     //  Send image file to store it and get image url response
     if (imageFile === null) {
-      imgURL = gameImgPlaceholder;
+      imgURL = '';
     } else {
-      imgURL = await uploadImage(imageFile);
-      if (!imgURL) return;
+      const newImage = await uploadImage(imageFile);
+      if (!newImage) return;
+      imgURL = newImage.imgURL;
+      delete_imgURL = newImage.delete_imgURL;
     }
 
     const dataToSend = {
@@ -61,6 +64,7 @@ export const addGame = async (imageFile, formValues) => {
       rating,
       category,
       type,
+      delete_imgURL,
     };
 
     await addGameValidationSchema.validate(dataToSend, { abortEarly: false });
@@ -88,4 +92,15 @@ export const addGameAndUpdateLocalGames = async (imageFile, formValues) => {
   if (!newGame) return;
   const updatedData = updateStoredData(GAMES_KEY, newGame);
   return updatedData;
+};
+
+// Delete game and update storage
+
+export const deleteGame = async id => {
+  const request = await deleteData(`${GAMES_URL}/${id}`);
+  if (!request) return toast.error('Server error');
+
+  const storeData = deleteFromStoreData(GAMES_KEY, id);
+  toast.success('Game has been deleted');
+  return storeData;
 };

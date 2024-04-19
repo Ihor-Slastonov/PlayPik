@@ -20,7 +20,7 @@ const PickGameCard = ({ game }) => {
       </div>
       <div
         className="w-full h-full
-    bg-[url('../assets/border.png')] bg-[center] bg-no-repeat
+    bg-[url('/border.png')] bg-[center] bg-no-repeat
     rounded-md overflow-hidden relative"
       ></div>
       <p

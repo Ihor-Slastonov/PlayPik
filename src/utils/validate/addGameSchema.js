@@ -24,4 +24,5 @@ export const addGameValidationSchema = Yup.object().shape({
     .oneOf(gameCategories, 'Invalid category')
     .required('Required'),
   type: Yup.string().oneOf(gameTypes, 'Invalid type').required('Required'),
+  delete_imgURL: Yup.string(),
 });

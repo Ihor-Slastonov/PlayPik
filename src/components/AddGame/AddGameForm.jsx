@@ -8,7 +8,6 @@ import { useState } from 'react';
 import { addGameAndUpdateLocalGames } from '../../services/playpikApi/games';
 import { usePlayPik } from '../../utils/hooks/usePlayPik';
 import { gameCategories } from '../../utils/constans/gameValuse';
-import { gameImgPlaceholder } from '../../utils/constans/urls';
 
 const AddGameForm = ({ setPreviewImage }) => {
   const [imageFile, setImageFile] = useState(null);
@@ -22,7 +21,7 @@ const AddGameForm = ({ setPreviewImage }) => {
   };
 
   const handleNoImageClick = setFieldValue => () => {
-    setFieldValue('imgURL', gameImgPlaceholder);
+    setFieldValue('imgURL', '');
   };
 
   return (

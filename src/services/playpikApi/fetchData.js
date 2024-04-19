@@ -29,3 +29,12 @@ export const postData = async (url, data, params) => {
     return error;
   }
 };
+
+export const deleteData = async (url, params) => {
+  try {
+    const response = await playpikApi.delete(url, { params });
+    return response?.data;
+  } catch (error) {
+    console.error('Error fetching data');
+  }
+};
