@@ -9,9 +9,11 @@ const CardList = ({ games, toogleModal }) => {
       {games?.map(game => (
         <Card
           key={game.id}
+          id={game.id}
           imgURL={game.imgURL}
           title={game.title}
           category={game.category}
+          delete_imgURL={game.delete_imgURL}
         />
       ))}
 

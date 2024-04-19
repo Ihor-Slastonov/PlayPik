@@ -2,10 +2,10 @@ import toast from 'react-hot-toast';
 import { GAMES_URL } from '../../utils/constans/urls';
 import { addGameValidationSchema } from '../../utils/validate/addGameSchema';
 import { uploadImage } from '../imgLoadApi/uploadImage';
-import { getData, postData } from './fetchData';
+import { deleteData, getData, postData } from './fetchData';
 import * as Yup from 'yup';
 import { GAMES_KEY } from '../../utils/constans/storageKeys';
-import { updateStoredData } from '../../utils/storage';
+import { deleteFromStoreData, updateStoredData } from '../../utils/storage';
 
 /**
  * Fetch all games from the DB
@@ -92,4 +92,15 @@ export const addGameAndUpdateLocalGames = async (imageFile, formValues) => {
   if (!newGame) return;
   const updatedData = updateStoredData(GAMES_KEY, newGame);
   return updatedData;
+};
+
+// Delete game and update storage
+
+export const deleteGame = async id => {
+  const request = await deleteData(`${GAMES_URL}/${id}`);
+  if (!request) return toast.error('Server error');
+
+  const storeData = deleteFromStoreData(GAMES_KEY, id);
+  toast.success('Game has been deleted');
+  return storeData;
 };

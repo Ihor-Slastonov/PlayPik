@@ -15,3 +15,13 @@ export const updateStoredData = (key, newGame) => {
 
   return storedData;
 };
+
+export const deleteFromStoreData = (key, id) => {
+  let storedData = getStoredData(key);
+  if (!storedData) return null;
+
+  const newData = storedData.filter(item => item.id !== id);
+
+  sessionStorage.setItem(key, JSON.stringify(newData));
+  return newData;
+};
