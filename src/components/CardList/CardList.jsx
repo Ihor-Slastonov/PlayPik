@@ -14,6 +14,7 @@ const CardList = ({ games, toogleModal }) => {
           title={game.title}
           category={game.category}
           delete_imgURL={game.delete_imgURL}
+          type={game.type}
         />
       ))}
 
