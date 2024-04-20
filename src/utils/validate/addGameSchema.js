@@ -4,7 +4,7 @@ import { gameCategories, gameTypes } from '../constans/gameValuse';
 export const addGameYupSchema = Yup.object({
   title: Yup.string()
     .min(3, 'Must be at least 3 characters')
-    .max(15, 'Must be 15 characters or less')
+    .max(200, 'Must be 200 characters or less')
     .required('Required'),
   imgURL: Yup.string().required('Required'),
   category: Yup.string()
