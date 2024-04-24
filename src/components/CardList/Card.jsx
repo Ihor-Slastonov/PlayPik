@@ -2,11 +2,13 @@ import PropTypes from 'prop-types';
 
 import DeleteCardBtn from './DeleteCardBtn';
 import { UserIcon, UsersIcon } from '@heroicons/react/24/solid';
+import Image from '../common/Image';
 
 const Card = ({ id, imgURL, title, category, delete_imgURL, type }) => {
   return (
     <li className="card__container group">
-      <img className="card__image" src={imgURL} alt={title} />
+      <Image imgURL={imgURL} alt="title" />
+      {/* <img className="card__image" src={imgURL} alt={title} /> */}
       <p className="card__title">{title}</p>
 
       <span className="card__label">{category}</span>
