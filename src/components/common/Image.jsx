@@ -29,6 +29,6 @@ export default Image;
 Image.propTypes = {
   imgURL: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
-  w: PropTypes.string.isRequired,
-  h: PropTypes.string.isRequired,
+  w: PropTypes.string,
+  h: PropTypes.string,
 };
