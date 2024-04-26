@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 
-const Image = ({ imgURL = '', alt, w = '220px', h = '340px' }) => {
+const Image = ({ imgURL = 'no image', alt, w = '220px', h = '340px' }) => {
   return (
     <>
-      {imgURL === '' ? (
+      {imgURL === '' || imgURL === 'no image' ? (
         <img
           className="card__image"
           src="/placeholder.webp"

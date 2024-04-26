@@ -49,8 +49,9 @@ export const addGame = async (imageFile, formValues) => {
 
     //Check if no image then will set the default image.
     //  Send image file to store it and get image url response
-    if (imageFile === null) {
-      imgURL = '';
+    if (imageFile === null || imageFile === 'no image') {
+      imgURL = 'no image';
+      delete_imgURL = '';
     } else {
       const newImage = await uploadImage(imageFile);
       if (!newImage) return;
