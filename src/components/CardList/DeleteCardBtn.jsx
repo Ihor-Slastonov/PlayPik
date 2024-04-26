@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import PropTypes from 'prop-types';
 import { TrashIcon } from '@heroicons/react/24/solid';
@@ -12,6 +12,10 @@ const DeleteCardBtn = ({ id, title, delete_imgURL }) => {
   const [isSecondStep, setIsSecondStep] = useState(false);
   const [isDeleteImg, setIsDeleteImg] = useState(false);
   const { setGames } = usePlayPik();
+
+  useEffect(() => {
+    if (delete_imgURL === '') return setIsDeleteImg(true);
+  }, [delete_imgURL]);
 
   const handleToggle = () => {
     setIsOpen(prev => !prev);
@@ -79,23 +83,35 @@ const DeleteCardBtn = ({ id, title, delete_imgURL }) => {
           <>
             <p className="text-xl mb-2">Please follow this steps:</p>
             <ol className="list-decimal text-sm text-light flex flex-col gap-1 ml-4 mb-8">
-              <li>Click delete image button</li>
-              <li>You will be redirected to website in a new tab</li>
-              <li>You need to find red delete button. Click it!</li>
-              <li>Come back to Plapick page and press Delete game button</li>
+              {delete_imgURL !== '' ? (
+                <>
+                  <li>Click delete image button</li>
+                  <li>You will be redirected to website in a new tab</li>
+                  <li>You need to find red delete button. Click it!</li>
+                  <li>
+                    Come back to Plapick page and press Delete game button
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>Click delete game button</li>
+                </>
+              )}
             </ol>
 
             <div className="flex items-center justify-between">
-              <a
-                href={delete_imgURL}
-                rel="noreferrer noopener"
-                target="_blank"
-                className="inline-block p-4 border text-xl font-bold uppercase
+              {delete_imgURL !== '' && (
+                <a
+                  href={delete_imgURL}
+                  rel="noreferrer noopener"
+                  target="_blank"
+                  className="inline-block p-4 border text-xl font-bold uppercase
                 hover:border-accent_red hover:text-accent_red duration-500 ease-in-out"
-                onClick={() => setIsDeleteImg(true)}
-              >
-                Delete Image
-              </a>
+                  onClick={() => setIsDeleteImg(true)}
+                >
+                  Delete Image
+                </a>
+              )}
               <button
                 type="button"
                 className="p-4 border text-xl font-bold uppercase
