@@ -40,4 +40,8 @@
   .container {
     @apply w-full mx-auto px-4 desk:w-[1200px];
   }
+
+  .center {
+    @apply flex items-center justify-center;
+  }
 }
