@@ -16,7 +16,11 @@ const FilterBar = () => {
       filteredGames = games.filter(game => game.category !== value);
       setGames(filteredGames);
     } else if (value === 'pc + pc vr') {
-        filteredGames = 
+      filteredGames = games.filter(game => game.category !== 'quest');
+      setGames(filteredGames);
+    } else {
+      filteredGames = games.filter(game => game.category === value);
+      setGames(filteredGames);
     }
   };
 
