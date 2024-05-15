@@ -2,8 +2,9 @@ import { useState, useRef, useEffect } from 'react';
 
 import PropTypes from 'prop-types';
 import { ChevronDownIcon } from '@heroicons/react/24/solid';
+import clsx from 'clsx';
 
-const CustomSelect = ({ values, defaultValue = '', foo }) => {
+const CustomSelect = ({ values, defaultValue = '', foo, color = 'yellow' }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentValue, setCurrentValue] = useState(defaultValue);
   const selectRef = useRef();
@@ -25,7 +26,7 @@ const CustomSelect = ({ values, defaultValue = '', foo }) => {
   const handleSelectItem = item => {
     setCurrentValue(item);
     setIsOpen(false);
-    foo(item);
+    foo && foo(item);
   };
 
   return (
@@ -33,10 +34,15 @@ const CustomSelect = ({ values, defaultValue = '', foo }) => {
       <button
         type="button"
         onClick={toggleSelectList}
-        className="flex items-center gap-2 justify-between 
-        min-w-36 p-2 border rounded-md shadow-md bg-dark uppercase 
-         duration-500 ease-in-out 
-         hover:border-accent hover:shadow-accent"
+        className={clsx(
+          `flex items-center gap-2 justify-between min-w-36 p-2 
+          border rounded-md shadow-sm bg-dark uppercase duration-500 ease-in-out`,
+          {
+            'hover:border-accent hover:shadow-accent': color === 'yellow',
+            'hover:border-accent_green hover:shadow-accent_green':
+              color === 'green',
+          }
+        )}
       >
         {currentValue}
         <ChevronDownIcon
@@ -56,7 +62,7 @@ const CustomSelect = ({ values, defaultValue = '', foo }) => {
               onClick={() => handleSelectItem(value)}
               className={`cursor-pointer p-2 hover:bg-semi-dark 
               first-of-type:rounded-t-md last-of-type:rounded-b-md
-              ${value === currentValue ? 'bg-semi-dark' : 'bg-dark'}`}
+              ${value === currentValue ? 'bg-semi-dark' : 'bg-dark'} `}
             >
               {value}
             </li>
@@ -73,4 +79,5 @@ CustomSelect.propTypes = {
   values: PropTypes.array,
   defaultValue: PropTypes.string,
   foo: PropTypes.func,
+  color: PropTypes.string,
 };
