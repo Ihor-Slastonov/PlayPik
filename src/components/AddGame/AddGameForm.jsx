@@ -21,7 +21,7 @@ const AddGameForm = ({ setPreviewImage }) => {
   };
 
   const handleNoImageClick = setFieldValue => () => {
-    setFieldValue('imgURL', '');
+    setFieldValue('imgURL', 'no image');
   };
 
   return (

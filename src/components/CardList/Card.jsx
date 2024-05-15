@@ -8,7 +8,6 @@ const Card = ({ id, imgURL, title, category, delete_imgURL, type }) => {
   return (
     <li className="card__container group">
       <Image imgURL={imgURL} alt="title" />
-      {/* <img className="card__image" src={imgURL} alt={title} /> */}
       <p className="card__title">{title}</p>
 
       <span className="card__label">{category}</span>

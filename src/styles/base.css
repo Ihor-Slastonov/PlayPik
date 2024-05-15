@@ -34,10 +34,14 @@
   }
 
   .section {
-    @apply pt-10 pb-14;
+    @apply pt-5 pb-14;
   }
 
   .container {
     @apply w-full mx-auto px-4 desk:w-[1200px];
+  }
+
+  .center {
+    @apply flex items-center justify-center;
   }
 }

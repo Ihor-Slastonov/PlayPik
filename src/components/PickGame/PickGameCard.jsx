@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import Image from '../common/Image';
 
 const PickGameCard = ({ game }) => {
   return (
@@ -10,13 +11,7 @@ const PickGameCard = ({ game }) => {
         className="w-[220px] h-[340px] rounded-md overflow-hidden
       absolute top-1/2 left-[85px] -translate-y-1/2"
       >
-        <img
-          src={game.imgURL}
-          width={220}
-          height={340}
-          alt={game.title}
-          className="w-full h-full object-cover"
-        />
+        <Image imgURL={game.imgURL} alt={game.title} />
       </div>
       <div
         className="w-full h-full
