@@ -7,7 +7,6 @@ export const getStoredData = key => {
 export const updateStoredData = (key, newGame) => {
   let storedData = getStoredData(key);
 
-  console.log(storedData);
   if (!storedData) return null;
   storedData.push(newGame);
 
