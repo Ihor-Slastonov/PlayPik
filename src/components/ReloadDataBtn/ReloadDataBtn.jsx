@@ -1,12 +1,42 @@
 import { useState } from 'react';
 
-import { ArrowPathIcon } from '@heroicons/react/24/solid';
 import clsx from 'clsx';
+import toast from 'react-hot-toast';
+
+import { GAMES_KEY } from '../../utils/constans/storageKeys';
+import { ArrowPathIcon } from '@heroicons/react/24/solid';
+import { fetchAllGames } from '../../services/playpikApi/games';
+import { usePlayPik } from '../../utils/hooks/usePlayPik';
+import { getStoredData } from '../../utils/storage';
 
 const ReloadDataBtn = () => {
   const [isHovered, setIsHovered] = useState(false);
+  const { setGames } = usePlayPik();
+  const storedGames = getStoredData(GAMES_KEY);
+
+  const handleClick = async () => {
+    const data = await fetchAllGames();
+    if (!data) return [];
+    // Checking how many new games
+
+    const newGamesCount = data.reduce((acc, game) => {
+      return storedGames.some(existingGame => existingGame.id === game.id)
+        ? acc
+        : acc + 1;
+    }, 0);
+    if (newGamesCount > 0) {
+      toast.success(`${newGamesCount} new game(s)`);
+    } else {
+      toast('No new games');
+    }
+
+    sessionStorage.setItem(GAMES_KEY, JSON.stringify(data));
+    setGames(data);
+  };
+
   return (
     <button
+      onClick={handleClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={clsx(
