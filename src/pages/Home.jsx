@@ -35,17 +35,17 @@ const Home = () => {
 
   return (
     <>
+      <header className="py-5 sticky top-0 z-10 bg-dark border-b shadow-md shadow-semi-dark">
+        <div className="container">
+          <div className="flex flex-col gap-4">
+            <PickGame />
+            <FilterBar />
+          </div>
+        </div>
+      </header>
       <main>
         <section className="section">
           <div className="container">
-            <div
-              className="flex flex-col gap-4
-           pb-5 sticky top-0 z-10 bg-dark"
-            >
-              <PickGame />
-              <FilterBar />
-            </div>
-
             <CardList games={games} toogleModal={toogleModal} />
             <Modal
               containerId="modal_addGameForm"
