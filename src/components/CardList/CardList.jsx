@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import Card from './Card';
 import AddCardBtn from './AddCardBtn';
-import { useEffect, useState } from 'react';
 import CardListSkeleton from './CardListSkeleton';
 
 const CardList = ({ games, toogleModal }) => {
@@ -15,30 +16,37 @@ const CardList = ({ games, toogleModal }) => {
     if (games.length === imageLoadedCounter) {
       setIsAllImgsLoaded(true);
     }
-  }, [games, imageLoadedCounter]);
+  }, [games.length, imageLoadedCounter]);
 
   return (
     <>
-      {!isAllImgsLoaded ? (
-        <CardListSkeleton />
-      ) : (
-        <ul className="flex flex-wrap items-center gap-4">
-          {games?.map(game => (
-            <Card
-              key={game.id}
-              id={game.id}
-              imgURL={game.imgURL}
-              title={game.title}
-              category={game.category}
-              delete_imgURL={game.delete_imgURL}
-              type={game.type}
-              imageCounter={imageCounter}
-            />
-          ))}
+      {!isAllImgsLoaded && <CardListSkeleton />}
+      <AnimatePresence>
+        {isAllImgsLoaded && (
+          <motion.ul
+            initial={{ opacity: 0, filter: "blur(20px)" }}
+            animate={{ opacity: 1, filter: "blur(0px)" }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: 'easeInOut', delay: 0.5 }}
+            className="flex flex-wrap items-center gap-4 "
+          >
+            {games?.map(game => (
+              <Card
+                key={game.id}
+                id={game.id}
+                imgURL={game.imgURL}
+                title={game.title}
+                category={game.category}
+                delete_imgURL={game.delete_imgURL}
+                type={game.type}
+                imageCounter={imageCounter}
+              />
+            ))}
 
-          <AddCardBtn toogleModal={toogleModal} />
-        </ul>
-      )}
+            <AddCardBtn toogleModal={toogleModal} />
+          </motion.ul>
+        )}
+      </AnimatePresence>
     </>
   );
 };
