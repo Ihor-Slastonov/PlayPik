@@ -24,10 +24,10 @@ const CardList = ({ games, toogleModal }) => {
       <AnimatePresence>
         {isAllImgsLoaded && (
           <motion.ul
-            initial={{ opacity: 0, filter: "blur(20px)" }}
-            animate={{ opacity: 1, filter: "blur(0px)" }}
+            initial={{ opacity: 0, filter: 'blur(20px)', scale: 1.2 }}
+            animate={{ opacity: 1, filter: 'blur(0px)', scale: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: 'easeInOut', delay: 0.5 }}
+            transition={{ duration: 1, ease: 'easeInOut' }}
             className="flex flex-wrap items-center gap-4 "
           >
             {games?.map(game => (
