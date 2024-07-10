@@ -1,6 +1,12 @@
 import PropTypes from 'prop-types';
 
-const Image = ({ imgURL = 'no image', alt, w = '220px', h = '340px' }) => {
+const Image = ({
+  imgURL = 'no image',
+  alt,
+  w = '220px',
+  h = '340px',
+  imageCounter,
+}) => {
   return (
     <>
       {imgURL === '' || imgURL === 'no image' ? (
@@ -10,6 +16,7 @@ const Image = ({ imgURL = 'no image', alt, w = '220px', h = '340px' }) => {
           alt={alt}
           width={w}
           height={h}
+          onLoad={imageCounter}
         />
       ) : (
         <img
@@ -18,6 +25,7 @@ const Image = ({ imgURL = 'no image', alt, w = '220px', h = '340px' }) => {
           alt={alt}
           width={w}
           height={h}
+          onLoad={imageCounter}
         />
       )}
     </>
@@ -31,4 +39,5 @@ Image.propTypes = {
   alt: PropTypes.string.isRequired,
   w: PropTypes.string,
   h: PropTypes.string,
+  imageCounter: PropTypes.func.isRequired,
 };

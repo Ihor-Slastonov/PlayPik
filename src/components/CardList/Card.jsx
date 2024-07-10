@@ -4,10 +4,18 @@ import DeleteCardBtn from './DeleteCardBtn';
 import { UserIcon, UsersIcon } from '@heroicons/react/24/solid';
 import Image from '../common/Image';
 
-const Card = ({ id, imgURL, title, category, delete_imgURL, type }) => {
+const Card = ({
+  id,
+  imgURL,
+  title,
+  category,
+  delete_imgURL,
+  type,
+  imageCounter,
+}) => {
   return (
     <li className="card__container group">
-      <Image imgURL={imgURL} alt="title" />
+      <Image imgURL={imgURL} alt="title" imageCounter={imageCounter} />
       <p className="card__title">{title}</p>
 
       <span className="card__label">{category}</span>
@@ -32,4 +40,5 @@ Card.propTypes = {
   category: PropTypes.string.isRequired,
   delete_imgURL: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
+  imageCounter: PropTypes.func.isRequired,
 };
