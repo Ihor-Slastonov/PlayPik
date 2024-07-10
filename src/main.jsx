@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './components/App';
 
 import './styles/index.css';
+import './styles/scrollbar.css';
 import { PlayPikProvider } from './provider/PlapPikProvider';
 import { Toaster } from 'react-hot-toast';
 

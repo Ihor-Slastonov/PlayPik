@@ -10,8 +10,6 @@ export default {
     colors: {
       black: colors.black,
       white: colors.white,
-      blue: colors.blue,
-      cyan: colors.cyan,
 
       dark: '#222831',
       'semi-dark': '#393E46',
