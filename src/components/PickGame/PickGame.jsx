@@ -5,6 +5,7 @@ import { usePlayPik } from '../../utils/hooks/usePlayPik';
 import PickGameCard from './PickGameCard';
 import { pickGame } from '../../utils/pickGame';
 import PickGameBtn from './PickGameBtn';
+import PickGameSkeleton from './PickGameSkeleton';
 
 const PickGame = () => {
   const [randomGame, setRandomGame] = useState(null);
@@ -36,6 +37,7 @@ const PickGame = () => {
         closeModal={handleClose}
         modalLayout={false}
       >
+        <PickGameSkeleton />
         <PickGameCard handleClose={handleClose} game={randomGame} />
       </Modal>
     </>
