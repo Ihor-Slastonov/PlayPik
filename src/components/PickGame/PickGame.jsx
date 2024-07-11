@@ -6,6 +6,7 @@ import Modal from '../Modal/Modal';
 import { usePlayPik } from '../../utils/hooks/usePlayPik';
 import PickGameCard from './PickGameCard';
 import { pickGame } from '../../utils/pickGame';
+import PickGameBtn from './PickGameBtn';
 
 const PickGame = () => {
   const [randomGame, setRandomGame] = useState(null);
@@ -31,16 +32,7 @@ const PickGame = () => {
 
   return (
     <>
-      {/* <div className="pb-5 pt-5  sticky top-0 z-10 bg-dark"> */}
-      <button
-        type="button"
-        className="w-52 h-20 block mx-auto  rounded-md
-                bg-[url('/button.webp')] bg-cover bg-no-repeat bg-center
-                hover:-translate-y-1 duration-500 hover:shadow-[0px_6px_6px_0px_rgba(0,0,0,0.75)]
-                active:-translate-y-[2px] outline-none"
-        onClick={handleClick}
-      ></button>
-      {/* </div> */}
+      <PickGameBtn handleClick={handleClick} />
 
       <Modal
         containerId="modal_playPick"
