@@ -39,5 +39,5 @@ Image.propTypes = {
   alt: PropTypes.string.isRequired,
   w: PropTypes.string,
   h: PropTypes.string,
-  imageCounter: PropTypes.func.isRequired,
+  imageCounter: PropTypes.func,
 };

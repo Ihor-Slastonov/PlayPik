@@ -1,9 +1,13 @@
 import PropTypes from 'prop-types';
 import Image from '../common/Image';
+import { motion } from 'framer-motion';
 
 const PickGameCard = ({ game }) => {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, scale: 0.5, left: '50%', translateX: '-50%' }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5, ease: 'easeInOut', delay: 4.2 }}
       className="w-[380px] h-[400px] bg-dark
      absolute top-20 left-1/2 -translate-x-1/2"
     >
@@ -26,7 +30,7 @@ const PickGameCard = ({ game }) => {
       >
         {game.title}
       </p>
-    </div>
+    </motion.div>
   );
 };
 
