@@ -4,6 +4,7 @@ import Modal from '../Modal/Modal';
 import PickGameCard from './PickGameCard';
 import PickGameBtn from './PickGameBtn';
 import PickGameSkeleton from './PickGameSkeleton';
+import Fact from '../Fact/Fact';
 
 import { usePlayPik } from '../../utils/hooks/usePlayPik';
 import { pickGame } from '../../utils/pickGame';
@@ -45,6 +46,7 @@ const PickGame = () => {
       >
         <PickGameSkeleton />
         <PickGameCard handleClose={handleClose} game={randomGame} />
+        <Fact />
       </Modal>
     </>
   );
