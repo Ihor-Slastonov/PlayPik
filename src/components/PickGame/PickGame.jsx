@@ -1,11 +1,14 @@
 import { useState } from 'react';
 
 import Modal from '../Modal/Modal';
-import { usePlayPik } from '../../utils/hooks/usePlayPik';
 import PickGameCard from './PickGameCard';
-import { pickGame } from '../../utils/pickGame';
 import PickGameBtn from './PickGameBtn';
 import PickGameSkeleton from './PickGameSkeleton';
+
+import { usePlayPik } from '../../utils/hooks/usePlayPik';
+import { pickGame } from '../../utils/pickGame';
+
+import sound from '../../assets/sound/kudasai2.mp3';
 
 const PickGame = () => {
   const [randomGame, setRandomGame] = useState(null);
@@ -13,12 +16,15 @@ const PickGame = () => {
 
   const { games } = usePlayPik();
 
+  const audio = new Audio(sound);
+
   const pickRandomGame = () => {
     const pickedGame = pickGame(games);
     setRandomGame(pickedGame);
   };
 
   const handleClick = () => {
+    audio.play();
     pickRandomGame();
     setIsOpen(true);
   };
