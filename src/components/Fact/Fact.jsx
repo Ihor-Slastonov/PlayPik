@@ -27,9 +27,9 @@ const Fact = () => {
       }}
       animate={{ opacity: 1, scale: 1, translateX: '-50%' }}
       transition={{ duration: 0.7, ease: 'easeInOut', delay: 5 }}
-      className="absolute bottom-1/4 left-1/2  
+      className="absolute top-[63%] left-1/2  
       w-80 min-h-28 rounded-lg 
-    bg-semi-dark border-2 border-dark"
+    bg-semi-dark border-2 border-dark origin-bottom"
     >
       <p className="text-xl py-2 px-4 rounded-t-lg  bg-dark">
         Interesting fact:
