@@ -49,5 +49,5 @@ Card.propTypes = {
   delete_imgURL: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   imageCounter: PropTypes.func.isRequired,
-  rating: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
 };
