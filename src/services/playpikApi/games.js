@@ -2,10 +2,14 @@ import toast from 'react-hot-toast';
 import { GAMES_URL } from '../../utils/constans/urls';
 import { addGameValidationSchema } from '../../utils/validate/addGameSchema';
 import { uploadImage } from '../imgLoadApi/uploadImage';
-import { deleteData, getData, postData } from './fetchData';
+import { deleteData, getData, postData, putData } from './fetchData';
 import * as Yup from 'yup';
 import { GAMES_KEY } from '../../utils/constans/storageKeys';
-import { deleteFromStoreData, updateStoredData } from '../../utils/storage';
+import {
+  deleteFromStoreData,
+  updateStoreDataItemValue,
+  updateStoredData,
+} from '../../utils/storage';
 
 /**
  * Fetch all games from the DB
@@ -88,7 +92,6 @@ export const addGame = async (imageFile, formValues) => {
 };
 
 export const addGameAndUpdateLocalGames = async (imageFile, formValues) => {
-  // add new game to data base
   const newGame = await addGame(imageFile, formValues);
   if (!newGame) return;
   const updatedData = updateStoredData(GAMES_KEY, newGame);
@@ -104,4 +107,16 @@ export const deleteGame = async id => {
   const storeData = deleteFromStoreData(GAMES_KEY, id);
   toast.success('Game has been deleted');
   return storeData;
+};
+
+// Change game rating and update storage
+
+export const changeGameRating = async (id, rating) => {
+  const newRating = rating + 1;
+
+  const response = await putData(`${GAMES_URL}/${id}`, { rating: newRating });
+  if (!response) return toast.error('Error updating');
+  toast.success(`Success. Prev rating: ${rating}. New rating: ${newRating}`);
+
+  return updateStoreDataItemValue(GAMES_KEY, id, 'rating', newRating);
 };

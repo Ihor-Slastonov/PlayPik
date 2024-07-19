@@ -30,6 +30,20 @@ export const postData = async (url, data, params) => {
   }
 };
 
+export const putData = async (url, data, params) => {
+  try {
+    const response = await playpikApi.put(url, data, params);
+    return response?.data;
+  } catch (error) {
+    const message = error?.response?.data
+      ? error.response.message
+      : error.message;
+
+    console.error(`Error fetching data to ${url}:`, message);
+    return error;
+  }
+};
+
 export const deleteData = async (url, params) => {
   try {
     const response = await playpikApi.delete(url, { params });
