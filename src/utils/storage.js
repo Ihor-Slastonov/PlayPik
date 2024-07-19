@@ -24,3 +24,16 @@ export const deleteFromStoreData = (key, id) => {
   sessionStorage.setItem(key, JSON.stringify(newData));
   return newData;
 };
+
+export const updateStoreDataItemValue = (key, id, field, value) => {
+  let storedData = getStoredData(key);
+  if (!storedData) return null;
+
+  const newData = storedData.map(item => {
+    if (item.id === id) {
+      return { ...item, [field]: value };
+    }
+    return item;
+  });
+  return newData;
+};
