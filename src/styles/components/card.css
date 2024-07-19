@@ -22,15 +22,20 @@
     text-xl
     text-light bg-tr_dark;
   }
-
   .card__label {
-    @apply min-w-20 h-8 rounded-s-lg absolute top-4 right-0  bg-accent_green
- text-xl font-bold text-center uppercase text-semi-dark;
+    @apply flex items-center justify-center text-xl font-bold uppercase text-semi-dark
+    h-8 p-2 rounded-s-lg;
+  }
+  .card__label-category {
+    @apply card__label min-w-20 bg-accent_green;
   }
 
-  .card__label-secondary {
-    @apply w-10 h-8 rounded-s-lg absolute top-14 right-0 bg-accent
-    text-xl font-bold text-center uppercase text-semi-dark flex items-center justify-center;
+  .card__label-type {
+    @apply card__label min-w-10 bg-accent;
+  }
+
+  .card__label-rating {
+    @apply card__label min-w-8 bg-accent_red;
   }
 
   .card__deleteBtn {
