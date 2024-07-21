@@ -1,9 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
-
 import clsx from 'clsx';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue } from 'framer-motion';
 
 import {
   HandThumbUpIcon,
@@ -11,8 +9,18 @@ import {
 } from '@heroicons/react/24/outline';
 
 import { changeGameRating } from '../../services/playpikApi/games';
+import useMeasure from 'react-use-measure';
 
 const PickGameConfirmBtn = ({ type, close, game, setGames }) => {
+  const [ref, bounds] = useMeasure({ scroll: false });
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const resetMousePosition = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
+
   const handleClick = async () => {
     if (type !== 'accept') return close();
 
@@ -23,6 +31,7 @@ const PickGameConfirmBtn = ({ type, close, game, setGames }) => {
 
   return (
     <motion.div
+      ref={ref}
       initial={{ opacity: 0, pointerEvents: 'none' }}
       animate={{ opacity: 1, pointerEvents: 'all' }}
       transition={{ duration: 0.5, delay: 5 }}
@@ -31,8 +40,21 @@ const PickGameConfirmBtn = ({ type, close, game, setGames }) => {
         type === 'accept' ? 'top-[8%] left-[8%]' : 'top-[8%] right-[8%]'
       )}
       onClick={handleClick}
+      onHoverStart={() => {
+        resetMousePosition();
+      }}
+      onHoverEnd={() => {
+        resetMousePosition();
+      }}
+      onPointerMove={e => {
+        mouseX.set((e.clientX - bounds.x - bounds.width / 2) * 0.2);
+        mouseY.set((e.clientY - bounds.y - bounds.height / 2) * 0.2);
+      }}
     >
-      <div className="flex flex-col items-center justify-center gap-8">
+      <motion.div
+        className="flex flex-col items-center justify-center gap-8"
+        style={{ rotateX: mouseX, rotateY: mouseY }}
+      >
         <div className="size-40 p-2 bg-white rounded-full group-hover:animate-bounce">
           <div
             className={clsx(
@@ -52,7 +74,7 @@ const PickGameConfirmBtn = ({ type, close, game, setGames }) => {
         ) : (
           <p className="font-bold text-5xl">YES, I LOVE BIG DICKS</p>
         )}
-      </div>
+      </motion.div>
     </motion.div>
   );
 };
