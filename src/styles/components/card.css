@@ -42,7 +42,7 @@
   }
 
   .card__deleteBtn {
-    @apply absolute top-4 left-1 w-8 h-8
+    @apply w-8 h-8
         rounded-md text-accent_red bg-dark
       flex items-center justify-center border border-dark
       hover:border-accent_red duration-500 ease-in-out;

@@ -2,12 +2,13 @@ import PropTypes from 'prop-types';
 
 import DeleteCardBtn from './DeleteCardBtn';
 import {
-  StarIcon,
+  // StarIcon,
   UserIcon,
   UsersIcon,
-  HeartIcon,
 } from '@heroicons/react/24/solid';
+
 import Image from '../common/Image';
+import CardFavoriteBtn from './CardFavoriteBtn';
 
 const Card = ({
   id,
@@ -17,7 +18,7 @@ const Card = ({
   delete_imgURL,
   type,
   imageCounter,
-  rating,
+  // rating,
   favorite,
 }) => {
   return (
@@ -34,18 +35,17 @@ const Card = ({
             <UsersIcon className="size-8" />
           )}
         </span>
-        {favorite && (
-          <span className="card__label-favorite">
-            <HeartIcon className="size-6 text-accent_red" />
-          </span>
-        )}
-        <span className="card__label-rating opacity-0 group-hover:opacity-100 duration-500 ease-in-out">
+        <CardFavoriteBtn favorite={favorite} />
+        {/* This is rating for future */}
+        {/* <span className="card__label-rating opacity-0 group-hover:opacity-100 duration-500 ease-in-out">
           <StarIcon className="size-6 text-accent mr-1" />
           {rating}
-        </span>
+        </span> */}
       </div>
 
-      <DeleteCardBtn title={title} delete_imgURL={delete_imgURL} id={id} />
+      <div className="absolute top-4 left-1 flex flex-col gap-2">
+        <DeleteCardBtn title={title} delete_imgURL={delete_imgURL} id={id} />
+      </div>
     </li>
   );
 };
@@ -60,6 +60,6 @@ Card.propTypes = {
   delete_imgURL: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   imageCounter: PropTypes.func.isRequired,
-  rating: PropTypes.number.isRequired,
+  rating: PropTypes.number,
   favorite: PropTypes.bool,
 };
