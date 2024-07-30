@@ -37,9 +37,12 @@
   .card__label-rating {
     @apply card__label min-w-8 bg-accent_red;
   }
+  .card__label-favorite {
+    @apply card__label min-w-6 bg-dark;
+  }
 
   .card__deleteBtn {
-    @apply absolute top-4 left-1 w-8 h-8
+    @apply w-8 h-8
         rounded-md text-accent_red bg-dark
       flex items-center justify-center border border-dark
       hover:border-accent_red duration-500 ease-in-out;

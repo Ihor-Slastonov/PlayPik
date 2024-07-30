@@ -41,6 +41,7 @@ const CardList = ({ games, toogleModal }) => {
                 type={game.type}
                 imageCounter={imageCounter}
                 rating={game.rating}
+                favorite={game.favorite}
               />
             ))}
 

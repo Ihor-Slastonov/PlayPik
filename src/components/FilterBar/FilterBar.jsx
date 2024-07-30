@@ -7,6 +7,7 @@ import CustomSelect from '../common/CustomSelect';
 import { filterGames } from '../../utils/filter';
 import { getStoredData } from '../../utils/storage';
 import { GAMES_KEY } from '../../utils/constans/storageKeys';
+import FilterFavorites from './FilterFavorites';
 
 const FilterBar = () => {
   const games = getStoredData(GAMES_KEY);
@@ -27,7 +28,7 @@ const FilterBar = () => {
   };
 
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-4 relative">
       <div className="flex items-center gap-2 text-2xl">
         <p>Categories:</p>
         <CustomSelect
@@ -46,6 +47,8 @@ const FilterBar = () => {
           foo={handleTypeChange}
         />
       </div>
+
+      <FilterFavorites />
     </div>
   );
 };

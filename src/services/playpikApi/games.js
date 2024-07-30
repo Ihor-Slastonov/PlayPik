@@ -120,3 +120,16 @@ export const changeGameRating = async (id, rating) => {
 
   return updateStoreDataItemValue(GAMES_KEY, id, 'rating', newRating);
 };
+
+// Change favorite field
+
+export const changeGameFavoriteField = async (id, favorite) => {
+  const favoriteField = !favorite;
+  const response = await putData(`${GAMES_URL}/${id}`, {
+    favorite: favoriteField,
+  });
+  if (!response) return toast.error('Error updating');
+  toast.success('Success');
+  updateStoreDataItemValue(GAMES_KEY, id, 'favorite', favoriteField);
+  return favoriteField;
+};
