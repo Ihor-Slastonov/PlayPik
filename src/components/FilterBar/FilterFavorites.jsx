@@ -2,17 +2,22 @@ import { HeartIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import { useState } from 'react';
 
+const FAVORITE_KEY = 'isFavorite';
+
 const FilterFavorites = () => {
   const [isFavorite, setIsFavorite] = useState(false);
 
-  const toggleFavorite = () => setIsFavorite(prev => !prev);
+  const handleClick = () => {
+    setIsFavorite(prev => !prev);
+    sessionStorage.setItem(FAVORITE_KEY, !isFavorite);
+  };
 
   return (
     <button
       type="button"
       className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
     flex items-center justify-center p-1 group"
-      onClick={toggleFavorite}
+      onClick={handleClick}
     >
       <HeartIcon
         className={clsx(
