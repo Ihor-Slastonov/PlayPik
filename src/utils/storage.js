@@ -4,6 +4,11 @@ export const getStoredData = key => {
   return JSON.parse(storedData);
 };
 
+export const getStoredDataById = (key, id) => {
+  const storedData = getStoredData(key);
+  return storedData.filter(data => data.id === id);
+};
+
 export const updateStoredData = (key, newGame) => {
   let storedData = getStoredData(key);
 
@@ -35,5 +40,5 @@ export const updateStoreDataItemValue = (key, id, field, value) => {
     }
     return item;
   });
-  return newData;
+  return sessionStorage.setItem(key, JSON.stringify(newData));
 };

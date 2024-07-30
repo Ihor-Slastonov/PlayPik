@@ -9,7 +9,8 @@
     "tags": [],
     "delete_imgURL": "https://ibb.co/W6WmHTm/8769b441f2871c743eafa8a1a12ac24b",
     "desc": "desc 1",
-    "id": "1"
+    "id": "1",
+    "favorite": false
   },
   {
     "title": "Abiotic factor",
@@ -21,7 +22,8 @@
     "tags": [],
     "delete_imgURL": "https://ibb.co/BNc1Dxp/7aaf51b6897461e53951e5e8bd23b221",
     "desc": "desc 2",
-    "id": "2"
+    "id": "2",
+    "favorite": false
   },
   {
     "title": "Sons of the Forest",
@@ -33,7 +35,8 @@
     "tags": [],
     "delete_imgURL": "https://ibb.co/bLxq5yq/f88300b760a817a3a5a98e8ef1c4fdd7",
     "desc": "desc 3",
-    "id": "3"
+    "id": "3",
+    "favorite": false
   },
   {
     "title": "OutLast",
@@ -45,7 +48,8 @@
     "tags": [],
     "delete_imgURL": "https://ibb.co/5BmTrRb/1e6f8be780a6e42050f5ea2bf4bb9562",
     "desc": "desc 4",
-    "id": "4"
+    "id": "4",
+    "favorite": false
   },
   {
     "title": "Dead Island 2",
@@ -57,18 +61,33 @@
     "tags": [],
     "delete_imgURL": "https://ibb.co/9w71RRz/4cf159dc22ed71d86c561ee1b74c6235",
     "desc": "desc 5",
-    "id": "5"
+    "id": "5",
+    "favorite": true
   },
   {
     "title": "Helldivers 2",
     "imgURL": "https://i.ibb.co/jTrP4vY/2024-04-19-213402.png",
-    "rating": 0,
+    "rating": 1,
     "category": "pc",
     "date": 1720299199,
     "type": "multiplayer",
     "tags": [],
     "delete_imgURL": "https://ibb.co/XbCrJZP/52292dcb0abb5236157b5348af26f2f9",
     "desc": "desc 6",
-    "id": "6"
+    "id": "6",
+    "favorite": true
+  },
+  {
+    "title": "Phasmafobia",
+    "imgURL": "https://i.ibb.co/XxvKnzN/openart-image-0-Rq-Grd-A8-1721770185329-raw-1.jpg",
+    "rating": 0,
+    "category": "pc",
+    "date": 1721770075,
+    "type": "multiplayer",
+    "tags": [],
+    "delete_imgURL": "https://ibb.co/s9MNTFk/94e4eb7a16e09cc4bc3f93d0717a70fa",
+    "desc": "desc 7",
+    "id": "7",
+    "favorite": false
   }
 ]

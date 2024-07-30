@@ -35,7 +35,7 @@ const Card = ({
             <UsersIcon className="size-8" />
           )}
         </span>
-        <CardFavoriteBtn favorite={favorite} />
+        <CardFavoriteBtn favorite={favorite} id={id} />
         {/* This is rating for future */}
         {/* <span className="card__label-rating opacity-0 group-hover:opacity-100 duration-500 ease-in-out">
           <StarIcon className="size-6 text-accent mr-1" />
