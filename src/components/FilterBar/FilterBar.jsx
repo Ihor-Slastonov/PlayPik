@@ -21,13 +21,13 @@ const FilterBar = () => {
 
   const handleCategoryChange = selectedCategory => {
     setCategory(selectedCategory);
-    const filteredGames = filterGames(games, selectedCategory, type);
+    const filteredGames = filterGames(games, selectedCategory, type, gameList);
     setGames(filteredGames);
   };
 
   const handleTypeChange = selectedType => {
     setType(selectedType);
-    const filteredGames = filterGames(games, category, selectedType);
+    const filteredGames = filterGames(games, category, selectedType, gameList);
     setGames(filteredGames);
   };
 
