@@ -7,7 +7,6 @@ import CustomSelect from '../common/CustomSelect';
 import { filterGames } from '../../utils/filter';
 import { getStoredData } from '../../utils/storage';
 import { GAMES_KEY } from '../../utils/constans/storageKeys';
-import FilterFavorites from './FilterFavorites';
 
 const FilterBar = () => {
   const games = getStoredData(GAMES_KEY);
@@ -48,7 +47,6 @@ const FilterBar = () => {
         />
       </div>
 
-      <FilterFavorites />
     </div>
   );
 };

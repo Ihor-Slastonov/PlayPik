@@ -1,28 +1,31 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
 import { HeartIcon as SolidHeartIcon } from '@heroicons/react/24/solid';
 import { HeartIcon as OutlineHeartIcon } from '@heroicons/react/24/outline';
 import { changeGameFavoriteField } from '../../services/playpikApi/games';
+import { usePlayPik } from '../../utils/hooks/usePlayPik';
 
 const CardFavoriteBtn = ({ favorite, id }) => {
-  const [isFavorite, setIsFavorite] = useState(favorite);
+  const { games, setGames } = usePlayPik();
 
   const handleClick = async () => {
-    const favoriteField = await changeGameFavoriteField(id, favorite);
-    setIsFavorite(favoriteField);
+    await changeGameFavoriteField(id, favorite);
+    const updatedGames = games.map(game =>
+      game.id === id ? { ...game, favorite: !game.favorite } : game
+    );
+    setGames(updatedGames);
   };
 
   return (
     <button
       className={clsx(
         'card__label-favorite group-hover:opacity-100 duration-500 ease-in-out',
-        isFavorite ? 'opacity-100' : 'opacity-0'
+        favorite ? 'opacity-100' : 'opacity-0'
       )}
       onClick={handleClick}
     >
-      {isFavorite ? (
+      {favorite ? (
         <SolidHeartIcon className="size-6 text-accent_red" />
       ) : (
         <OutlineHeartIcon className="size-6 text-accent_red" />
