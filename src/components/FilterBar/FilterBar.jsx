@@ -1,7 +1,11 @@
 import { useState } from 'react';
 
 import { usePlayPik } from '../../utils/hooks/usePlayPik';
-import { filterCategories, filterTypes } from '../../utils/constans/gameValuse';
+import {
+  filterCategories,
+  filterTypes,
+  gameListTypes,
+} from '../../utils/constans/gameValuse';
 
 import CustomSelect from '../common/CustomSelect';
 import { filterGames } from '../../utils/filter';
@@ -13,6 +17,7 @@ const FilterBar = () => {
   const { setGames } = usePlayPik();
   const [category, setCategory] = useState('all');
   const [type, setType] = useState('all');
+  const [gameList, setGameList] = useState('all');
 
   const handleCategoryChange = selectedCategory => {
     setCategory(selectedCategory);
@@ -23,6 +28,12 @@ const FilterBar = () => {
   const handleTypeChange = selectedType => {
     setType(selectedType);
     const filteredGames = filterGames(games, category, selectedType);
+    setGames(filteredGames);
+  };
+
+  const handleGameListChange = selectedList => {
+    setGameList(selectedList);
+    const filteredGames = filterGames(games, category, type, selectedList);
     setGames(filteredGames);
   };
 
@@ -47,6 +58,15 @@ const FilterBar = () => {
         />
       </div>
 
+      <div className="flex items-center gap-2 text-2xl">
+        <p>Game List:</p>
+        <CustomSelect
+          values={gameListTypes}
+          defaultValue="all"
+          color="red"
+          foo={handleGameListChange}
+        />
+      </div>
     </div>
   );
 };

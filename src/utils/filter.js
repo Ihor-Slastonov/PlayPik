@@ -16,7 +16,16 @@ const filterGamesByType = (games, type) => {
   }
 };
 
-export const filterGames = (games, category, type) => {
-  const gamesFilteredByCategory = filterGamesByCategory(games, category);
+const filterGamesByFavorite = (games, gameList) => {
+  if (gameList === 'all') return games;
+  return games.filter(game => game.favorite === true);
+};
+
+export const filterGames = (games, category, type, gameList) => {
+  const gamesFilteredByGameList = filterGamesByFavorite(games, gameList);
+  const gamesFilteredByCategory = filterGamesByCategory(
+    gamesFilteredByGameList,
+    category
+  );
   return filterGamesByType(gamesFilteredByCategory, type);
 };

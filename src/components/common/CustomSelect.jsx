@@ -41,6 +41,7 @@ const CustomSelect = ({ values, defaultValue = '', foo, color = 'yellow' }) => {
             'hover:border-accent hover:shadow-accent': color === 'yellow',
             'hover:border-accent_green hover:shadow-accent_green':
               color === 'green',
+            'hover:border-accent_red hover:shadow-accent_red': color === 'red',
           }
         )}
       >
