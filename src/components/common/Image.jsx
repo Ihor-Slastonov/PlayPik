@@ -1,12 +1,6 @@
 import PropTypes from 'prop-types';
 
-const Image = ({
-  imgURL = 'no image',
-  alt,
-  w = '220px',
-  h = '340px',
-  imageCounter,
-}) => {
+const Image = ({ imgURL = 'no image', alt, w = '220px', h = '340px' }) => {
   return (
     <>
       {imgURL === '' || imgURL === 'no image' ? (
@@ -16,7 +10,6 @@ const Image = ({
           alt={alt}
           width={w}
           height={h}
-          onLoad={imageCounter}
         />
       ) : (
         <img
@@ -25,7 +18,6 @@ const Image = ({
           alt={alt}
           width={w}
           height={h}
-          onLoad={imageCounter}
         />
       )}
     </>
