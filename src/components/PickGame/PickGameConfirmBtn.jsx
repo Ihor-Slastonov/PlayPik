@@ -24,9 +24,9 @@ const PickGameConfirmBtn = ({ type, close, game, setGames }) => {
 
   const handleClick = async () => {
     if (type !== 'accept') return close();
-
-    const updatedGames = await changeGameRating(game.id, game.rating);
-    setGames(updatedGames);
+    await changeGameRating(game.id, game.rating)
+    // const updatedGames = await changeGameRating(game.id, game.rating);
+    // setGames(updatedGames);
     close();
   };
 
