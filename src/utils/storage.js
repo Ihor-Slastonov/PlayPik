@@ -40,5 +40,6 @@ export const updateStoreDataItemValue = (key, id, field, value) => {
     }
     return item;
   });
-  return sessionStorage.setItem(key, JSON.stringify(newData));
+  sessionStorage.setItem(key, JSON.stringify(newData));
+  return newData
 };

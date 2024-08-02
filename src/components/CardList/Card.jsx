@@ -17,13 +17,12 @@ const Card = ({
   category,
   delete_imgURL,
   type,
-  imageCounter,
   // rating,
   favorite,
 }) => {
   return (
     <li className="card__container group">
-      <Image imgURL={imgURL} alt="title" imageCounter={imageCounter} />
+      <Image imgURL={imgURL} alt="title" />
       <p className="card__title">{title}</p>
 
       <div className="absolute top-4 right-0 flex flex-col items-end gap-2">
@@ -59,7 +58,6 @@ Card.propTypes = {
   category: PropTypes.string.isRequired,
   delete_imgURL: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  imageCounter: PropTypes.func.isRequired,
   rating: PropTypes.number,
   favorite: PropTypes.bool,
 };
