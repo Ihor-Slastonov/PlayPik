@@ -40,7 +40,7 @@ const ReloadDataBtn = () => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={clsx(
-        'grid place-content-center size-10 rounded-md border absolute bottom-[40px] right-[80px] duration-500 ease-in-out',
+        'grid place-content-center size-10 rounded-md border duration-500 ease-in-out',
         isHovered
           ? 'border-accent_green opacity-100'
           : 'border-semi-dark opacity-50'

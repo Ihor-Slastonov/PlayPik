@@ -11,6 +11,7 @@ import AddGame from '../components/AddGame/AddGame';
 import PickGame from '../components/PickGame/PickGame';
 import FilterBar from '../components/FilterBar/FilterBar';
 import ReloadDataBtn from '../components/ReloadDataBtn/ReloadDataBtn';
+import Chat from '../components/Chat/Chat';
 
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -57,7 +58,13 @@ const Home = () => {
           </div>
         </section>
       </main>
-      <ReloadDataBtn />
+      <div
+        className="flex flex-col gap-2
+      absolute bottom-[40px] right-[80px]"
+      >
+        <Chat />
+        <ReloadDataBtn />
+      </div>
     </>
   );
 };
