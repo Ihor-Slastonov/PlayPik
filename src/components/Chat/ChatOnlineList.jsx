@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 const ChatOnlineList = ({ nicknameList }) => {
   return (
-    <ul className="w-20 h-full border border-accent border-l-accent_green absolute top-0 right-0 px-2">
+    <ul className="block w-24 h-full border-l-accent border-l px-2">
       <p>Online</p>
       {nicknameList?.map(nick => (
         <li key={nick.id} className="flex items-center gap-2 w-full">
