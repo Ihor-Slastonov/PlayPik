@@ -8,9 +8,7 @@ import ChatOnlineList from './ChatOnlineList';
 
 const Chat = () => {
   const [nickname, setNickname] = useState('');
-  const [nicknameList, setNicknameList] = useState([
-    { nick: 'Jam', id: '2312312' },
-  ]);
+  const [nicknameList, setNicknameList] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToogle = () => setIsOpen(prev => !prev);
