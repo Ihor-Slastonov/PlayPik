@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 
-import { ChevronUpIcon } from '@heroicons/react/24/outline';
+import { XMarkIcon } from '@heroicons/react/24/outline';
 
 const ChatContainer = ({ children, isOpen, toogle }) => {
   return (
     isOpen && (
       <div
-        className="w-40 h-80 border rounded-md 
+        className="w-[300px] h-[400px] border rounded-md 
       absolute -top-[400px] right-10 bg-dark"
       >
         {children}
@@ -16,7 +16,7 @@ const ChatContainer = ({ children, isOpen, toogle }) => {
         flex items-center justify-center border"
           onClick={toogle}
         >
-          <ChevronUpIcon className="size-6" />
+          <XMarkIcon className="size-6" />
         </button>
       </div>
     )

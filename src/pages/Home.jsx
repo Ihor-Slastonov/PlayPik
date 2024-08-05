@@ -60,7 +60,7 @@ const Home = () => {
       </main>
       <div
         className="flex flex-col gap-2
-      absolute bottom-[40px] right-[80px]"
+      fixed bottom-[40px] right-[80px]"
       >
         <Chat />
         <ReloadDataBtn />
