@@ -10,7 +10,7 @@ import axios from 'axios';
 const Chat = () => {
   const [nickname, setNickname] = useState('');
   const [nicknameList, setNicknameList] = useState([]);
-
+  const [massegeList, setMassegeList] = useState([]);
   const [message, setMessage] = useState('');
   const [isLoaded, setIsLoaded] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -18,8 +18,8 @@ const Chat = () => {
   useEffect(() => {
     const connectionToServer = async () => {
       try {
-        // const res = await axios.get('http://localhost:3002');
-        const res = await axios.get('https://playpickchat.onrender.com');
+        const res = await axios.get('http://localhost:3002');
+        // const res = await axios.get('https://playpickchat.onrender.com');
         if (!res) return;
         setMessage(res.data.message);
       } catch (error) {
@@ -49,7 +49,9 @@ const Chat = () => {
       <ChatBtn foo={handleToogle} />
       <ChatContainer isOpen={isOpen} toogle={handleToogle}>
         {!isLoaded ? (
-          <p>Loading...</p>
+          <p className="absolute position_center animate-pulse text-2xl">
+            Loading...
+          </p>
         ) : (
           <>
             {!nickname && (
