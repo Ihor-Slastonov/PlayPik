@@ -12,7 +12,7 @@ import {
 import { changeGameRating } from '../../services/playpikApi/games';
 import useMeasure from 'react-use-measure';
 
-const PickGameConfirmBtn = ({ type, close, game, setGames }) => {
+const PickGameConfirmBtn = ({ type, close, game }) => {
   const [ref, bounds] = useMeasure({ scroll: false });
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -24,7 +24,7 @@ const PickGameConfirmBtn = ({ type, close, game, setGames }) => {
 
   const handleClick = async () => {
     if (type !== 'accept') return close();
-    await changeGameRating(game.id, game.rating)
+    await changeGameRating(game.id, game.rating);
     // const updatedGames = await changeGameRating(game.id, game.rating);
     // setGames(updatedGames);
     close();
