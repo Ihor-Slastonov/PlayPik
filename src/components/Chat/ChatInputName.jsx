@@ -32,6 +32,6 @@ const ChatInputName = ({ setNickname }) => {
 
 export default ChatInputName;
 
-ChatInputName.propType = {
+ChatInputName.propTypes = {
   setNickname: PropTypes.func,
 };
