@@ -7,7 +7,7 @@ const ChatContainer = ({ children, isOpen, toogle }) => {
     isOpen && (
       <div
         className="w-[500px] h-[400px] border-2 border-accent rounded-md 
-      absolute -top-[400px] right-10 bg-dark shadow-md shadow-accent"
+      absolute -top-[400px] right-10 bg-dark shadow-md shadow-accent flex"
       >
         {children}
         <button

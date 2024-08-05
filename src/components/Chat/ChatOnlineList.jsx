@@ -7,7 +7,7 @@ const ChatOnlineList = ({ nicknameList }) => {
       {nicknameList?.map(nick => (
         <li key={nick.id} className="flex items-center gap-2 w-full">
           <div className="block w-2 h-2 bg-accent_green rounded-full flex-shrink-0" />
-          <p className="truncate flex-grow">{nick.nick}</p>
+          <p className="truncate flex-grow">{nick.name}</p>
         </li>
       ))}
     </ul>
