@@ -32,7 +32,7 @@ const ChatInputName = ({ setNickname }) => {
       </label>
       <div
         className="w-full h-6 absolute -bottom-[30px] left-0 
-       bg-accent_green rounded-md blur-sm"
+       bg-accent_green rounded-md blur-md"
       ></div>
       <p className="absolute rotate-180 -scale-x-100 text-2xl blur-[1px] top-[74px] left-3 text-accent ">
         {inputValue}
