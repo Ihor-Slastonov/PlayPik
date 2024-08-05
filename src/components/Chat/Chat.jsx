@@ -18,6 +18,7 @@ const Chat = () => {
   useEffect(() => {
     const connectionToServer = async () => {
       try {
+        // const res = await axios.get('http://localhost:3002');
         const res = await axios.get('https://playpickchat.onrender.com');
         if (!res) return;
         setMessage(res.data.message);
