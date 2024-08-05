@@ -25,7 +25,7 @@ const ChatInputName = ({ setNickname }) => {
         Enter Your Nickname
         <input
           type="text"
-          className="text-dark w-full px-1 text-2xl"
+          className="text-dark w-full px-1 text-2xl rounded-md"
           onChange={handleOnChangeInput}
           value={inputValue}
         />
