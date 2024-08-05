@@ -13,7 +13,7 @@ const Chat = () => {
     <>
       <ChatBtn foo={handleToogle} />
       <ChatContainer isOpen={isOpen} toogle={handleToogle}>
-        <ChatInputName setNickname={setNickname} />
+        {!nickname && <ChatInputName setNickname={setNickname} />}
       </ChatContainer>
     </>
   );
