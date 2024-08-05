@@ -6,9 +6,11 @@ import ChatInputName from './ChatInputName';
 
 const Chat = () => {
   const [nickname, setNickname] = useState('');
+  const [nicknameList, setNicknameList] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToogle = () => setIsOpen(prev => !prev);
+
   return (
     <>
       <ChatBtn foo={handleToogle} />
