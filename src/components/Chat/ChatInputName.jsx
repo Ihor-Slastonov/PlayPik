@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import PropTypes from 'prop-types';
+
 const ChatInputName = ({ setNickname }) => {
   const [inputValue, setInputValue] = useState('');
 
@@ -29,3 +31,7 @@ const ChatInputName = ({ setNickname }) => {
 };
 
 export default ChatInputName;
+
+ChatInputName.propType = {
+  setNickname: PropTypes.func,
+};
