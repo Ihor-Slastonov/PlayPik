@@ -52,7 +52,7 @@ const Chat = () => {
     });
 
     socket.on('recieveMessage', messages => {
-      setMassegeList(messages);
+      setMassegeList(prev => [...prev, messages]);
     });
 
     return () => {
