@@ -18,12 +18,13 @@ const ChatMessages = ({ messages, name }) => {
           }`}
         >
           <div className="inline-block">
-            <p className="font-bold">{msg.name === name ? 'You' : msg.name}</p>
+            <p className="font-bold">{msg.name === name ? 'You' : msg.name} </p>
             <p
               className={`px-2 rounded-lg text-dark max-w-xs break-words
               ${msg.name === name ? 'bg-accent_green' : 'bg-accent'}`}
             >
               {msg.message}
+              <span className="block text-xs text-semi-dark">{msg.time}</span>
             </p>
           </div>
         </li>

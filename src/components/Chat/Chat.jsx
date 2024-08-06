@@ -20,6 +20,7 @@ const Chat = () => {
   const [message, setMessage] = useState('');
   const [isLoaded, setIsLoaded] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [typingUser, setTypingUser] = useState('');
 
   useEffect(() => {
     const connectionToServer = async () => {
@@ -55,12 +56,18 @@ const Chat = () => {
       setMassegeList(prev => [...prev, messages]);
     });
 
+    socket.on('typing', user => {
+      setTypingUser(user);
+      setTimeout(() => setTypingUser(''), 3000);
+    });
+
     return () => {
       socket.disconnect();
       socket.off('userList');
       socket.off('userLeft');
       socket.off('disconnect');
       socket.off('recieveMessage');
+      socket.off('typing');
     };
   }, []);
 
@@ -91,16 +98,30 @@ const Chat = () => {
               <ChatInputName setNickname={handleSetNameAndAddToList} />
             )}
 
-            <div className="w-full flex flex-col ">
+            <div className="w-full flex flex-col">
               {nickname && (
                 <>
                   <h2 className="text-2xl text-center mb-2">{message}</h2>
                   <ChatMessages messages={massegeList} name={nickname} />
-                  <ChatSendMessage handleSendMessage={handleSendMessage} />
+                  {typingUser && (
+                    <p className="absolute bottom-14 left-0">
+                      {typingUser} is typing...
+                    </p>
+                  )}
+                  <ChatSendMessage
+                    handleSendMessage={handleSendMessage}
+                    socket={socket}
+                    nickname={nickname}
+                  />
                 </>
               )}
             </div>
-            {nickname && <ChatOnlineList nicknameList={nicknameList} />}
+            {nickname && (
+              <ChatOnlineList
+                nicknameList={nicknameList}
+                typingUser={typingUser}
+              />
+            )}
           </>
         )}
       </ChatContainer>

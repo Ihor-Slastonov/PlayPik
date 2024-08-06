@@ -1,10 +1,15 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const ChatSendMessage = ({ handleSendMessage }) => {
+const ChatSendMessage = ({ handleSendMessage, socket, nickname }) => {
   const [messageField, setMessageField] = useState('');
 
-  const onFieldChange = e => setMessageField(e.target.value);
+  const onFieldChange = e => {
+    setMessageField(e.target.value);
+    if (e.target.value) {
+      socket.emit('typing', nickname);
+    }
+  };
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -28,5 +33,7 @@ const ChatSendMessage = ({ handleSendMessage }) => {
 export default ChatSendMessage;
 
 ChatSendMessage.propTypes = {
-  handleSendMessage: PropTypes.func,
+  handleSendMessage: PropTypes.func.isRequired,
+  socket: PropTypes.object.isRequired,
+  nickname: PropTypes.string.isRequired,
 };
