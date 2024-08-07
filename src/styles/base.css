@@ -8,6 +8,10 @@
   --dark: '#222831';
 }
 
+html {
+  overflow-y: scroll;
+}
+
 @font-face {
   font-family: 'MyPlay';
   src: url('/fonts/play/Play-Regular.ttf');
