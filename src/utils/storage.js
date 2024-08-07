@@ -1,6 +1,6 @@
 export const getStoredData = key => {
   const storedData = sessionStorage.getItem(key, {});
-  if (!storedData) console.log('No data');
+  if (!storedData) return;
   return JSON.parse(storedData);
 };
 
@@ -41,5 +41,16 @@ export const updateStoreDataItemValue = (key, id, field, value) => {
     return item;
   });
   sessionStorage.setItem(key, JSON.stringify(newData));
-  return newData
+  return newData;
+};
+
+export const getLocalStorageData = key => {
+  let storedData = localStorage.getItem(key);
+  if (!storedData) return localStorage.setItem(key, '');
+  return JSON.stringify(storedData);
+};
+
+export const setLocalStorageData = (key, data) => {
+  localStorage.setItem(key, JSON.stringify(data));
+  return;
 };
