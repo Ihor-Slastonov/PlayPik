@@ -11,11 +11,11 @@ import { Toaster } from 'react-hot-toast';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <PlayPikProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <PlayPikProvider>
         <App />
         <Toaster />
-      </BrowserRouter>
-    </PlayPikProvider>
+      </PlayPikProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
