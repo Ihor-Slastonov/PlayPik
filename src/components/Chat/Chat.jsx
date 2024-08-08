@@ -8,7 +8,7 @@ import ChatBtn from './ChatBtn';
 import ChatContainer from './ChatContainer';
 import ChatInputName from './ChatInputName';
 import ChatOnlineList from './ChatOnlineList';
-import { socket } from '../../services/socket';
+import { socketChat } from '../../services/socket';
 import toast from 'react-hot-toast';
 import ChatMessages from './ChatMessages';
 import ChatSendMessage from './ChatSendMessage';
@@ -33,41 +33,41 @@ const Chat = () => {
         toast.error('Error connection');
       } finally {
         setIsLoaded(true);
-        socket.connect();
+        socketChat.connect();
       }
     };
     connectionToServer();
 
-    socket.on('userList', users => {
+    socketChat.on('userList', users => {
       setNicknameList(users);
     });
 
-    socket.on('userLeft', userName => {
+    socketChat.on('userLeft', userName => {
       toast(`${userName} has left the chat`);
     });
 
-    socket.on('disconnect', () => {
+    socketChat.on('disconnect', () => {
       toast.error('Disconnected from server');
       setNickname('');
       setIsOpen(false);
     });
 
-    socket.on('recieveMessage', messages => {
+    socketChat.on('recieveMessage', messages => {
       setMassegeList(prev => [...prev, messages]);
     });
 
-    socket.on('typing', user => {
+    socketChat.on('typing', user => {
       setTypingUser(user);
       setTimeout(() => setTypingUser(''), 3000);
     });
 
     return () => {
-      socket.disconnect();
-      socket.off('userList');
-      socket.off('userLeft');
-      socket.off('disconnect');
-      socket.off('recieveMessage');
-      socket.off('typing');
+      socketChat.disconnect();
+      socketChat.off('userList');
+      socketChat.off('userLeft');
+      socketChat.off('disconnect');
+      socketChat.off('recieveMessage');
+      socketChat.off('typing');
     };
   }, []);
 
@@ -75,13 +75,13 @@ const Chat = () => {
 
   const handleSetNameAndAddToList = name => {
     setNickname(name);
-    socket.emit('newUser', name);
+    socketChat.emit('newUser', name);
   };
 
   const handleSendMessage = message => {
     const messageData = { name: nickname, message };
 
-    socket.emit('sendMessage', messageData);
+    socketChat.emit('sendMessage', messageData);
   };
 
   return (
@@ -110,7 +110,7 @@ const Chat = () => {
                   )}
                   <ChatSendMessage
                     handleSendMessage={handleSendMessage}
-                    socket={socket}
+                    socket={socketChat}
                     nickname={nickname}
                   />
                 </>
