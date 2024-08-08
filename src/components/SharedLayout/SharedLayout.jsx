@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 
 import FilterBar from '../FilterBar/FilterBar';
 import PickGame from '../PickGame/PickGame';
@@ -8,10 +8,15 @@ import ReloadDataBtn from '../ReloadDataBtn/ReloadDataBtn';
 import NavPanel from '../NavPanel/NavPanel';
 import PickGameTournament from '../PickGame/PickGameTournament/PickGameTournament';
 import { AnimatePresence, motion } from 'framer-motion';
+import {
+  ArrowLeftCircleIcon,
+  ArrowRightCircleIcon,
+} from '@heroicons/react/24/outline';
 
 const SharedLayout = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
+  const togglePath = location.pathname === '/' ? '/tournament' : '/';
 
   return (
     <>
@@ -20,6 +25,18 @@ const SharedLayout = () => {
           <div
             className={`flex flex-col gap-4 relative ${isHomePage ? 'min-h-[160px]' : 'min-h-[120px]'}`}
           >
+            <Link
+              to={togglePath}
+              className="size-16 p-1 flex center absolute top-2 left-1/3 group"
+            >
+              <ArrowLeftCircleIcon className="size-14 group-hover:text-accent duration-500 ease-in-out" />
+            </Link>
+            <Link
+              to={togglePath}
+              className="size-16 p-1 flex center absolute top-2 right-1/3 group"
+            >
+              <ArrowRightCircleIcon className="size-14 group-hover:text-accent_green duration-500 ease-in-out" />
+            </Link>
             <NavPanel />
             <AnimatePresence>
               {isHomePage ? (

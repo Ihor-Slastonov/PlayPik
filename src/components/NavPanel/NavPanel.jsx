@@ -17,7 +17,7 @@ const NavPanel = () => {
   return (
     <div className="w-full absolute top-0 left-0 flex items-center justify-between pointer-events-none">
       <nav className="flex items-center gap-2 pointer-events-auto">
-        mode:
+        <p>mode:</p>
         <Link
           to={location.pathname === '/' ? '/tournament' : '/'}
           className="p-2 rounded-lg border border-accent 
