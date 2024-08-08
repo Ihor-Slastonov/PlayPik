@@ -8,7 +8,7 @@ import TournamentList from '../components/Tournament/TournamentList';
 
 const TournamentPage = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [newUserName, setNewUserName] = useState('');
+  const [newUserName, setNewUserName] = useState({});
   const [onlineList, setOnlineList] = useState([]);
 
   useEffect(() => {
@@ -26,13 +26,17 @@ const TournamentPage = () => {
     };
     getAccess();
 
+    socketTournament.on('newUser', user => {
+      setNewUserName(user);
+    });
+
     socketTournament.on('userList', users => {
       setOnlineList(users);
     });
 
     socketTournament.on('disconnect', () => {
       setIsLoading(true);
-      setNewUserName('');
+      setNewUserName({});
       setOnlineList([]);
     });
     return () => {
@@ -42,7 +46,6 @@ const TournamentPage = () => {
   }, []);
 
   const handleRegisterUser = user => {
-    setNewUserName(user);
     socketTournament.emit('newUser', user);
   };
 
@@ -53,7 +56,7 @@ const TournamentPage = () => {
           <h1 className="text-4xl text-center mb-4">
             Welocome
             <span className="text-accent_green mx-1">
-              {newUserName && newUserName}
+              {Object.keys(newUserName).length !== 0 && newUserName.userName}
             </span>
             To Tournament Mode
           </h1>
@@ -62,7 +65,7 @@ const TournamentPage = () => {
             <p>Loading...</p>
           ) : (
             <>
-              {!newUserName ? (
+              {Object.keys(newUserName).length === 0 ? (
                 <>
                   <p className="text-center text-xl">
                     Please enter you name and press &apos;connect&apos;

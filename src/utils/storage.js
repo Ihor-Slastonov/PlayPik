@@ -46,11 +46,9 @@ export const updateStoreDataItemValue = (key, id, field, value) => {
 
 export const getLocalStorageData = key => {
   let storedData = localStorage.getItem(key);
-  if (!storedData) return localStorage.setItem(key, '');
-  return JSON.stringify(storedData);
+  return storedData ? JSON.parse(storedData) : null;
 };
 
 export const setLocalStorageData = (key, data) => {
   localStorage.setItem(key, JSON.stringify(data));
-  return;
 };
