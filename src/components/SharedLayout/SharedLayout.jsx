@@ -6,18 +6,47 @@ import PickGame from '../PickGame/PickGame';
 import Chat from '../Chat/Chat';
 import ReloadDataBtn from '../ReloadDataBtn/ReloadDataBtn';
 import NavPanel from '../NavPanel/NavPanel';
+import PickGameTournament from '../PickGame/PickGameTournament/PickGameTournament';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const SharedLayout = () => {
   const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   return (
     <>
       <header className="py-5 sticky top-0 z-10 bg-dark border-b shadow-md shadow-semi-dark">
         <div className="container">
-          <div className="flex flex-col gap-4 relative">
+          <div
+            className={`flex flex-col gap-4 relative ${isHomePage ? 'min-h-[160px]' : 'min-h-[120px]'}`}
+          >
             <NavPanel />
-            <PickGame />
-            {location.pathname === '/' && <FilterBar />}
+            <AnimatePresence>
+              {isHomePage ? (
+                <motion.div
+                  key="pickGame"
+                  initial={{ opacity: 0, x: -100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -100 }}
+                  transition={{ duration: 0.5, ease: 'easeInOut' }}
+                  className="absolute inset-0 pointer-events-none"
+                >
+                  <PickGame />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="pickGameTournament"
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 100 }}
+                  transition={{ duration: 0.5, ease: 'easeInOut' }}
+                  className="absolute inset-0 pointer-events-none"
+                >
+                  <PickGameTournament />
+                </motion.div>
+              )}
+            </AnimatePresence>
+            {isHomePage && <FilterBar />}
           </div>
         </div>
       </header>

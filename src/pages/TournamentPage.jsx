@@ -55,7 +55,7 @@ const TournamentPage = () => {
         <div className="container">
           <h1 className="text-4xl text-center mb-4">
             Welocome
-            <span className="text-accent_green mx-1">
+            <span className="text-accent_green mx-1 capitalize">
               {Object.keys(newUserName).length !== 0 && newUserName.userName}
             </span>
             To Tournament Mode
