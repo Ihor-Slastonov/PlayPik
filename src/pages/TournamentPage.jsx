@@ -30,7 +30,11 @@ const TournamentPage = () => {
       setOnlineList(users);
     });
 
-    socketTournament.on('disconnect');
+    socketTournament.on('disconnect', () => {
+      setIsLoading(true);
+      setNewUserName('');
+      setOnlineList([]);
+    });
     return () => {
       socketTournament.disconnect();
       socketTournament.off('userTor');
