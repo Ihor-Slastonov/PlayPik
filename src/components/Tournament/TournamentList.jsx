@@ -8,7 +8,7 @@ const TournamentList = ({ onlineList }) => {
   };
 
   return (
-    <ul className="flex justify-center gap-4 ">
+    <ul className="flex justify-center gap-4">
       {onlineList?.map((list, index) => (
         <li
           key={list.id}

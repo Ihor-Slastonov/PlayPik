@@ -5,11 +5,14 @@ import TournamentInputName from '../components/Tournament/TournamentInputName';
 import { socketTournament } from '../services/socket';
 import axios from 'axios';
 import TournamentList from '../components/Tournament/TournamentList';
+import TournamentPickedGames from '../components/Tournament/TournamentPickedGames';
 
 const TournamentPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [newUserName, setNewUserName] = useState({});
   const [onlineList, setOnlineList] = useState([]);
+  const [gamesInOrder, setGamesInOrder] = useState([]);
+  const [chosenGame, setChosenGame] = useState(null);
 
   useEffect(() => {
     const getAccess = async () => {
@@ -34,14 +37,26 @@ const TournamentPage = () => {
       setOnlineList(users);
     });
 
+    socketTournament.on('pickedGames', games => {
+      setGamesInOrder(games);
+    });
+
+    socketTournament.on('chosenGame', game => {
+      setChosenGame(game);
+    });
+
     socketTournament.on('disconnect', () => {
       setIsLoading(true);
       setNewUserName({});
       setOnlineList([]);
     });
     return () => {
+      socketTournament.off('newUser');
+      socketTournament.off('userList');
+      socketTournament.off('pickedGames');
+
+      socketTournament.off('disconnect');
       socketTournament.disconnect();
-      socketTournament.off('userTor');
     };
   }, []);
 
@@ -76,6 +91,12 @@ const TournamentPage = () => {
               ) : (
                 <>
                   <TournamentList onlineList={onlineList} />
+                  {gamesInOrder.length !== 0 && (
+                    <TournamentPickedGames
+                      gamesInOrder={gamesInOrder}
+                      chosenGame={chosenGame}
+                    />
+                  )}
                 </>
               )}
             </>
