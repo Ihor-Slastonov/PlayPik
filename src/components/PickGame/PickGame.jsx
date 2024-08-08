@@ -11,6 +11,7 @@ import { usePlayPik } from '../../utils/hooks/usePlayPik';
 import { pickGame } from '../../utils/pickGame';
 
 import sound from '../../assets/sound/kudasai2.mp3';
+import { saveLastPickedGame } from '../../services/playpikApi/games';
 
 const PickGame = () => {
   const [randomGame, setRandomGame] = useState(null);
@@ -23,6 +24,7 @@ const PickGame = () => {
   const pickRandomGame = () => {
     const pickedGame = pickGame(games);
     setRandomGame(pickedGame);
+    saveLastPickedGame(pickedGame);
   };
 
   const handleClick = () => {

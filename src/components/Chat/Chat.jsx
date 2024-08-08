@@ -47,7 +47,7 @@ const Chat = () => {
     });
 
     socketChat.on('disconnect', () => {
-      toast.error('Disconnected from server');
+      toast.error('Disconnected from Chat');
       setNickname('');
       setIsOpen(false);
     });

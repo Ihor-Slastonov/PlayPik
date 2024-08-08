@@ -38,7 +38,7 @@ const FilterBar = () => {
   };
 
   return (
-    <div className="flex items-center gap-4 relative">
+    <div className="flex items-center gap-4 absolute top-[100px]">
       <div className="flex items-center gap-2 text-2xl">
         <p>Categories:</p>
         <CustomSelect

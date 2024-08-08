@@ -5,11 +5,14 @@ import TournamentInputName from '../components/Tournament/TournamentInputName';
 import { socketTournament } from '../services/socket';
 import axios from 'axios';
 import TournamentList from '../components/Tournament/TournamentList';
+import TournamentPickedGames from '../components/Tournament/TournamentPickedGames';
 
 const TournamentPage = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [newUserName, setNewUserName] = useState('');
+  const [newUserName, setNewUserName] = useState({});
   const [onlineList, setOnlineList] = useState([]);
+  const [gamesInOrder, setGamesInOrder] = useState([]);
+  const [chosenGame, setChosenGame] = useState(null);
 
   useEffect(() => {
     const getAccess = async () => {
@@ -26,23 +29,38 @@ const TournamentPage = () => {
     };
     getAccess();
 
+    socketTournament.on('newUser', user => {
+      setNewUserName(user);
+    });
+
     socketTournament.on('userList', users => {
       setOnlineList(users);
     });
 
+    socketTournament.on('pickedGames', games => {
+      setGamesInOrder(games);
+    });
+
+    socketTournament.on('chosenGame', game => {
+      setChosenGame(game);
+    });
+
     socketTournament.on('disconnect', () => {
       setIsLoading(true);
-      setNewUserName('');
+      setNewUserName({});
       setOnlineList([]);
     });
     return () => {
+      socketTournament.off('newUser');
+      socketTournament.off('userList');
+      socketTournament.off('pickedGames');
+
+      socketTournament.off('disconnect');
       socketTournament.disconnect();
-      socketTournament.off('userTor');
     };
   }, []);
 
   const handleRegisterUser = user => {
-    setNewUserName(user);
     socketTournament.emit('newUser', user);
   };
 
@@ -52,8 +70,8 @@ const TournamentPage = () => {
         <div className="container">
           <h1 className="text-4xl text-center mb-4">
             Welocome
-            <span className="text-accent_green mx-1">
-              {newUserName && newUserName}
+            <span className="text-accent_green mx-1 capitalize">
+              {Object.keys(newUserName).length !== 0 && newUserName.userName}
             </span>
             To Tournament Mode
           </h1>
@@ -62,7 +80,7 @@ const TournamentPage = () => {
             <p>Loading...</p>
           ) : (
             <>
-              {!newUserName ? (
+              {Object.keys(newUserName).length === 0 ? (
                 <>
                   <p className="text-center text-xl">
                     Please enter you name and press &apos;connect&apos;
@@ -73,6 +91,12 @@ const TournamentPage = () => {
               ) : (
                 <>
                   <TournamentList onlineList={onlineList} />
+                  {gamesInOrder.length !== 0 && (
+                    <TournamentPickedGames
+                      gamesInOrder={gamesInOrder}
+                      chosenGame={chosenGame}
+                    />
+                  )}
                 </>
               )}
             </>

@@ -4,11 +4,13 @@ import { addGameValidationSchema } from '../../utils/validate/addGameSchema';
 import { uploadImage } from '../imgLoadApi/uploadImage';
 import { deleteData, getData, postData, putData } from './fetchData';
 import * as Yup from 'yup';
-import { GAMES_KEY } from '../../utils/constans/storageKeys';
+import { GAMES_KEY, LAST_GAME_KEY } from '../../utils/constans/storageKeys';
 import {
   deleteFromStoreData,
+  setLocalStorageData,
   updateStoreDataItemValue,
   updateStoredData,
+  getLocalStorageData,
 } from '../../utils/storage';
 
 /**
@@ -132,4 +134,14 @@ export const changeGameFavoriteField = async (id, favorite) => {
   toast.success('Success');
   updateStoreDataItemValue(GAMES_KEY, id, 'favorite', favoriteField);
   return favoriteField;
+};
+
+// Set game to localStorage
+
+export const saveLastPickedGame = game => {
+  setLocalStorageData(LAST_GAME_KEY, game);
+};
+
+export const getLastPickedGame = () => {
+  return getLocalStorageData(LAST_GAME_KEY);
 };

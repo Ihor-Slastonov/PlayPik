@@ -14,7 +14,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <PlayPikProvider>
         <App />
-        <Toaster />
+        <Toaster position="bottom-center" reverseOrder={false} />
       </PlayPikProvider>
     </BrowserRouter>
   </React.StrictMode>
