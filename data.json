@@ -1,21 +1,8 @@
 [
   {
-    "title": "Chained Together",
-    "imgURL": "https://i.ibb.co/W6WmHTm/2024-07-03-213612.png",
-    "rating": 0,
-    "category": "pc",
-    "date": 1720038933,
-    "type": "multiplayer",
-    "tags": [],
-    "delete_imgURL": "https://ibb.co/W6WmHTm/8769b441f2871c743eafa8a1a12ac24b",
-    "desc": "desc 1",
-    "id": "1",
-    "favorite": false
-  },
-  {
     "title": "Abiotic factor",
     "imgURL": "https://i.ibb.co/X8jwBgQ/2024-07-03-214112.png",
-    "rating": 0,
+    "rating": 2,
     "category": "pc",
     "date": 1720039181,
     "type": "multiplayer",
@@ -23,12 +10,12 @@
     "delete_imgURL": "https://ibb.co/BNc1Dxp/7aaf51b6897461e53951e5e8bd23b221",
     "desc": "desc 2",
     "id": "2",
-    "favorite": false
+    "favorite": true
   },
   {
     "title": "Sons of the Forest",
     "imgURL": "https://i.ibb.co/bLxq5yq/2024-07-03-214551.png",
-    "rating": 0,
+    "rating": 1,
     "category": "pc",
     "date": 1720039394,
     "type": "multiplayer",
@@ -41,7 +28,7 @@
   {
     "title": "OutLast",
     "imgURL": "https://i.ibb.co/SRbNt3F/2024-07-03-215932.png",
-    "rating": 0,
+    "rating": 2,
     "category": "pc",
     "date": 1720040164,
     "type": "multiplayer",
@@ -54,7 +41,7 @@
   {
     "title": "Dead Island 2",
     "imgURL": "https://i.ibb.co/9w71RRz/2024-07-03-220245.png",
-    "rating": 0,
+    "rating": 2,
     "category": "pc",
     "date": 1720040285,
     "type": "multiplayer",
@@ -62,12 +49,12 @@
     "delete_imgURL": "https://ibb.co/9w71RRz/4cf159dc22ed71d86c561ee1b74c6235",
     "desc": "desc 5",
     "id": "5",
-    "favorite": true
+    "favorite": false
   },
   {
     "title": "Helldivers 2",
     "imgURL": "https://i.ibb.co/jTrP4vY/2024-04-19-213402.png",
-    "rating": 1,
+    "rating": 3,
     "category": "pc",
     "date": 1720299199,
     "type": "multiplayer",
@@ -75,12 +62,12 @@
     "delete_imgURL": "https://ibb.co/XbCrJZP/52292dcb0abb5236157b5348af26f2f9",
     "desc": "desc 6",
     "id": "6",
-    "favorite": true
+    "favorite": false
   },
   {
     "title": "Phasmafobia",
     "imgURL": "https://i.ibb.co/XxvKnzN/openart-image-0-Rq-Grd-A8-1721770185329-raw-1.jpg",
-    "rating": 0,
+    "rating": 2,
     "category": "pc",
     "date": 1721770075,
     "type": "multiplayer",
@@ -89,5 +76,54 @@
     "desc": "desc 7",
     "id": "7",
     "favorite": false
+  },
+  {
+    "title": "Wild Rift",
+    "imgURL": "https://i.ibb.co/Wpt43L4/photo-2024-08-01-22-10-24.jpg",
+    "rating": 2,
+    "category": "quest",
+    "date": 1722546173,
+    "type": "multiplayer",
+    "tags": [],
+    "delete_imgURL": "https://ibb.co/1J6tnkt/ec0b52584675bf339394bb90e093c005",
+    "desc": "desc 8",
+    "id": "8",
+    "favorite": false
+  },
+  {
+    "title": "Chained toogether ",
+    "imgURL": "https://i.ibb.co/VM1bKJD/2024-08-05-221439.png",
+    "rating": 1,
+    "category": "pc",
+    "date": 1722891979,
+    "type": "multiplayer",
+    "tags": [],
+    "delete_imgURL": "https://ibb.co/frgZcqt/5c3021e22be98034c95c1b85bab309e6",
+    "desc": "desc 9",
+    "id": "9"
+  },
+  {
+    "title": "Risk of Rain 2",
+    "imgURL": "https://i.ibb.co/dQ291dC/image.jpg",
+    "rating": 0,
+    "category": "pc",
+    "date": 1722984712,
+    "type": "multiplayer",
+    "tags": [],
+    "delete_imgURL": "https://ibb.co/MRVTWYw/44663f3af66873cd9027b39c87d006e6",
+    "desc": "desc 10",
+    "id": "10"
+  },
+  {
+    "title": "Cult of Lamb",
+    "imgURL": "https://i.ibb.co/FVqPPdg/l-g-coop-v0-xfdslahz6s5d1.webp",
+    "rating": 0,
+    "category": "pc",
+    "date": 1723594668,
+    "type": "multiplayer",
+    "tags": [],
+    "delete_imgURL": "https://ibb.co/Kwz118F/8630242a1150d1f178f69afc0912c045",
+    "desc": "desc 11",
+    "id": "11"
   }
 ]
