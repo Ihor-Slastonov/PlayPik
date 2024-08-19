@@ -14,9 +14,9 @@ const TournamentPage = lazy(() => import('../pages/TournamentPage'));
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={AuthLayout}>
-        <Route index element={<LoginPage />} />
-        <Route path="sign-up" element={<RegisterPage />} />
+      <Route path="/" element={<AuthLayout />}>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
       </Route>
 
       {/* <Route path="/mode" element={<SharedLayout />}>

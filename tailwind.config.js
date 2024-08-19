@@ -11,6 +11,7 @@ export default {
       black: colors.black,
       white: colors.white,
 
+      dark_deep: '#1E201E',
       dark: '#222831',
       'semi-dark': '#393E46',
       accent: '#FFD369',
@@ -18,6 +19,7 @@ export default {
       accent_red: '#E94560',
       light: '#EEEEEE',
       tr_dark: 'rgba(0,0,0,0.5)',
+      violet_deep: '#3A1078',
     },
 
     fontFamily: {
@@ -29,5 +31,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [import('@tailwindcss/forms')],
 };

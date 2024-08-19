@@ -8,10 +8,6 @@
   --dark: '#222831';
 }
 
-html {
-  overflow-y: scroll;
-}
-
 @font-face {
   font-family: 'MyPlay';
   src: url('/fonts/play/Play-Regular.ttf');
@@ -34,7 +30,7 @@ html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    @apply bg-dark text-base font-myPlay text-light;
+    @apply bg-dark_deep text-base font-myPlay text-light;
   }
 
   .section {
