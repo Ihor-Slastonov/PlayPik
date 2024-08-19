@@ -4,12 +4,10 @@ import colors from 'tailwindcss/colors';
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    screens: {
-      desk: '1200px',
-    },
     colors: {
       black: colors.black,
       white: colors.white,
+      transparent: colors.transparent,
 
       dark_deep: '#1E201E',
       dark: '#222831',
@@ -19,7 +17,8 @@ export default {
       accent_red: '#E94560',
       light: '#EEEEEE',
       tr_dark: 'rgba(0,0,0,0.5)',
-      violet_deep: '#3A1078',
+      violet_deep: '#2E236C',
+      violet_dark: '#17153B',
     },
 
     fontFamily: {

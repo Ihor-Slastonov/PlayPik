@@ -1,0 +1,44 @@
+@layer components {
+  .btn {
+    @apply flex center px-4 py-2 border duration-500 ease-in-out;
+  }
+
+  /* Green */
+  .btn_outline_green {
+    @apply btn border-accent_green text-light bg-transparent
+    hover:bg-accent_green hover:text-dark
+    focus:bg-accent_green focus:text-dark;
+  }
+
+  .btn_inline_green {
+    @apply btn border-accent_green text-dark bg-accent_green
+    hover:bg-transparent hover:text-light
+    focus:bg-transparent focus:text-light;
+  }
+
+  /* Yellow */
+
+  .btn_outline_yellow {
+    @apply btn border-accent text-light bg-transparent
+    hover:bg-accent hover:text-dark
+    focus:bg-accent focus:text-dark;
+  }
+
+  .btn_inline_yellow {
+    @apply btn border-accent text-dark bg-accent
+    hover:bg-transparent hover:text-light
+    focus:bg-transparent focus:text-light;
+  }
+
+  /* Black */
+  .btn_outline_black {
+    @apply btn border-black text-light bg-transparent
+    hover:bg-black hover:text-light
+    focus:bg-black focus:text-light;
+  }
+  .btn_inline_black {
+    @apply btn border-black text-light bg-black
+    hover:bg-transparent hover:text-light
+    focus:bg-transparent focus:text-light;
+  }
+}

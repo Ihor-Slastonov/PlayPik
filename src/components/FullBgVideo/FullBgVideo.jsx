@@ -30,7 +30,7 @@ const FullBgVideo = ({ children }) => {
   return (
     <div className="relative w-full h-screen overflow-hidden">
       <div className="absolute top-0 left-0 z-10 bg-black w-full h-full opacity-50" />
-      {shouldLoadVideo && (
+      {shouldLoadVideo ? (
         <video
           className="absolute top-0 left-0 w-full h-full object-cover"
           src="/video/game-1.mp4"
@@ -38,8 +38,18 @@ const FullBgVideo = ({ children }) => {
           loop
           muted
         />
+      ) : (
+        <div
+          className="absolute top-0 left-0 w-full h-full
+        bg-[url('/bgMobile.webp')]  bg-repeat bg-cover bg-center"
+        />
       )}
-      <div className="relative z-20 h-full border-white border">{children}</div>
+      <div
+        className="relative top-0 left-0 pt-8 flex justify-center
+       z-20 h-full border-white border"
+      >
+        {children}
+      </div>
     </div>
   );
 };

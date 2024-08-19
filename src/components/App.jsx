@@ -1,14 +1,13 @@
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import AuthLayout from './AuthLayout';
+import AuthLayout from './AuthLayout/AuthLayout';
 import SharedLayout from './SharedLayout/SharedLayout';
 
 import NotFound from '../pages/NotFound';
 
 const LoginPage = lazy(() => import('../pages/LoginPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage'));
-const Home = lazy(() => import('../pages/Home'));
 const TournamentPage = lazy(() => import('../pages/TournamentPage'));
 
 const App = () => {
@@ -24,6 +23,7 @@ const App = () => {
         <Route path="/mode/tournament" element={<TournamentPage />} />
         <Route path="*" element={<NotFound />} />
       </Route> */}
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
