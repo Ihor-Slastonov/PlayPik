@@ -9,6 +9,10 @@ export default {
       white: colors.white,
       transparent: colors.transparent,
 
+      black_transparent: 'rgba(0, 0, 0, 0.8)',
+      violet_deep_transparent: 'rgba(46, 35, 108, 0.8)',
+      violet_dark_transparent: 'rgba(23, 21, 59, 0.8)',
+
       dark_deep: '#1E201E',
       dark: '#222831',
       'semi-dark': '#393E46',
