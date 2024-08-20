@@ -6,7 +6,6 @@ const FullBgVideo = ({ children }) => {
   const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
 
   useEffect(() => {
-    // Определяем ширину экрана и загружаем видео только если >= 1200px
     const handleResize = () => {
       if (window.innerWidth >= 1200) {
         setShouldLoadVideo(true);
@@ -15,13 +14,10 @@ const FullBgVideo = ({ children }) => {
       }
     };
 
-    // Проверка при загрузке страницы
     handleResize();
 
-    // Слушаем изменения размера окна
     window.addEventListener('resize', handleResize);
 
-    // Удаляем слушатель при размонтировании компонента
     return () => {
       window.removeEventListener('resize', handleResize);
     };
@@ -46,7 +42,7 @@ const FullBgVideo = ({ children }) => {
       )}
       <div
         className="relative top-0 left-0 pt-8 flex justify-center
-       z-20 h-full border-white border"
+       z-20 h-full"
       >
         {children}
       </div>

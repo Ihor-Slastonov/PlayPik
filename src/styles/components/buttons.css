@@ -38,7 +38,7 @@
   }
   .btn_inline_black {
     @apply btn border-black text-light bg-black
-    hover:bg-transparent hover:text-light
-    focus:bg-transparent focus:text-light;
+    hover:font-bold
+    focus:font-bold;
   }
 }
