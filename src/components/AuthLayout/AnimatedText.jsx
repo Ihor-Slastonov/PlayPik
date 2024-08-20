@@ -14,7 +14,7 @@ const AnimatedText = () => {
         y: 0,
         duration: 0.5,
         stagger: 1, // delay between each paragraph animation
-        ease: 'power2.out',
+        ease: 'power2.inOut',
       }
     );
   }, []);

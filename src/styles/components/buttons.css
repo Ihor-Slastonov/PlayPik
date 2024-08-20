@@ -1,6 +1,6 @@
 @layer components {
   .btn {
-    @apply flex center px-4 py-2 border duration-500 ease-in-out;
+    @apply flex center px-4 py-2 border duration-500 ease-in-out xl:text-lg;
   }
 
   /* Green */
@@ -30,6 +30,19 @@
     focus:bg-transparent focus:text-light;
   }
 
+  /* Red */
+
+  .btn_outline_red {
+    @apply btn border-accent_red text-light bg-transparent
+    hover:bg-accent_red;
+  }
+
+  .btn_inline_red {
+    @apply btn border-accent_red text-dark bg-accent
+    hover:bg-transparent hover:text-light
+    focus:bg-transparent focus:text-light;
+  }
+
   /* Black */
   .btn_outline_black {
     @apply btn border-black text-light bg-transparent
@@ -38,7 +51,7 @@
   }
   .btn_inline_black {
     @apply btn border-black text-light bg-black
-    hover:font-bold
-    focus:font-bold;
+    hover:font-bold hover:bg-dark_deep
+    focus:font-bold focus:bg-dark_deep;
   }
 }

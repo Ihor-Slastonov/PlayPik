@@ -19,7 +19,7 @@ const AuthLayoutNav = () => {
       >
         Sign Up
       </NavLink>
-      <NavLink to="/mode" className="btn_inline_black w-full col-span-2">
+      <NavLink to="/mode" className="btn_outline_red w-full col-span-2">
         Skip
       </NavLink>
     </nav>
