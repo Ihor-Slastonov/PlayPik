@@ -1,7 +1,6 @@
 /* eslint-disable react/no-unknown-property */
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useGLTF } from '@react-three/drei';
-import { useFrame, useThree } from '@react-three/fiber';
 
 import gsap from 'gsap';
 
@@ -10,6 +9,7 @@ import { toRadians } from '../utils/toRadians';
 import rocketScene from '../assets/3d/rocket.glb';
 
 const Rocket = props => {
+  const [isPlayed, setIsPlayed] = useState(true);
   const rocketRef = useRef();
   const { nodes, materials } = useGLTF(rocketScene);
 
@@ -32,7 +32,10 @@ const Rocket = props => {
   };
 
   useEffect(() => {
-    animateOnStart();
+    if (isPlayed) {
+      animateOnStart();
+      setIsPlayed(false);
+    }
   });
 
   return (
