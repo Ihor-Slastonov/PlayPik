@@ -5,13 +5,15 @@ import { Outlet, useLocation } from 'react-router-dom';
 import FullBgVideo from '../FullBgVideo/FullBgVideo';
 import AuthLayoutNav from './AuthLayoutNav';
 import AnimatedText from './AnimatedText';
+import AuthLayout3dScene from './AuthLayout3dScene';
 
 const AuthLayout = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
   return (
     <main>
-      <section>
+      <section className='relative'>
+        <AuthLayout3dScene />
         <FullBgVideo>
           <div
             className="bg-gradient-to-b 
