@@ -12,7 +12,7 @@ const AuthLayout = () => {
   const isHomePage = location.pathname === '/';
   return (
     <main>
-      <section className='relative'>
+      <section className="relative">
         <AuthLayout3dScene />
         <FullBgVideo>
           <div
@@ -27,7 +27,7 @@ const AuthLayout = () => {
               Welcome To PlayPik
             </h1>
 
-            <div className="mb-4 xl:mb-8 min-w-[320px]  min-h-[200px] mx-auto xl:w-[500px]">
+            <div className="mb-4 xl:mb-8 min-w-[320px]  min-h-[200px] mx-auto xl:w-[500px] duration-500 ease-in-out">
               {isHomePage ? (
                 <AnimatedText />
               ) : (
