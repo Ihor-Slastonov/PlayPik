@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import { Suspense } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 
@@ -10,6 +9,41 @@ import AuthLayout3dScene from './AuthLayout3dScene';
 const AuthLayout = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
+
+  // useEffect(() => {
+  //   const checkTokenValidity = async () => {
+  //     if (token) {
+  //       try {
+  //         // Запрос на сервер для проверки валидности токена
+  //         const response = await fetch('URL_TO_YOUR_API/check-token', {
+  //           method: 'POST',
+  //           headers: {
+  //             'Content-Type': 'application/json',
+  //             Authorization: `Bearer ${token}`,
+  //           },
+  //         });
+
+  //         const data = await response.json();
+
+  //         if (response.ok && data.valid) {
+  //           // Если токен валиден, перенаправляем на страницу с данными
+  //           navigate('/mode');
+  //         } else {
+  //           // Если токен не валиден, очищаем его из состояния
+  //           useAuthStore.getState().clearAuthInfo();
+  //           navigate('/login');
+  //         }
+  //       } catch (error) {
+  //         console.error('Ошибка проверки токена:', error);
+  //         useAuthStore.getState().clearAuthInfo();
+  //         navigate('/login');
+  //       }
+  //     }
+  //   };
+
+  //   checkTokenValidity();
+  // }, [token, navigate]);
+
   return (
     <main>
       <section className="relative">

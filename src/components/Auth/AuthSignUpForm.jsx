@@ -1,18 +1,41 @@
 import { Form, Formik } from 'formik';
-import React from 'react';
 import MyTextInput from '../common/MyTextInput';
 import { signUpSchema } from '../../utils/validate/signUpSchema';
+import useAuthStore from '../../store/useAuthStore';
+import { useNavigate } from 'react-router-dom';
+
 const AuthSignUpForm = () => {
+  const setAuthInfo = useAuthStore(state => state.setAuthInfo);
+  const navigate = useNavigate();
+
+  const apiReturn = values => {
+    const answer = {
+      name: values.name,
+      password: values.password,
+      token: 'dsskj##dsdas',
+    };
+
+    return answer;
+  };
+
   return (
     <Formik
       initialValues={{ name: '', password: '', email: '' }}
       validationSchema={signUpSchema}
       onSubmit={(values, { setSubmitting, resetForm }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
+        try {
+          const response = apiReturn(values);
 
+          if (response) {
+            setAuthInfo(response);
+            // После сохранения, можно перенаправить пользователя на нужную страницу
+            // Например, на страницу с данными:
+            navigate('/mode');
+          }
+        } catch (error) {
+          console.error(error);
+        }
+        setSubmitting(false);
         resetForm();
       }}
     >
