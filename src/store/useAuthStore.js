@@ -3,31 +3,21 @@ import { persist, createJSONStorage } from 'zustand/middleware';
 
 import { authInitialState } from '../utils/constans/initialValues';
 
-const useAuthStore = create(set =>
+const useAuthStore = create(
   persist(
     set => ({
-      id: null,
-      role: null,
-      token: null,
-      name: null,
-      email: null,
-      imageURL: null,
+      ...authInitialState,
 
-      setAuthInfo: (token, name, email, id, role, imageURL) =>
-        set({ token, name, email, id, role, imageURL }),
-      clearAuthInfo: () =>
-        set({
-          id: null,
-          role: null,
-          token: null,
-          name: null,
-          email: null,
-          imageURL: null,
-        }),
+      setAuthInfo: user => {
+        const { id, role, token, name, email, imageURL } = user;
+        return set({ id, role, token, name, email, imageURL });
+      },
+
+      clearAuthInfo: () => set(...authInitialState),
     }),
     {
-      name: 'authStorage',
-      storage: createJSONStorage(),
+      name: 'user-storage',
+      storage: createJSONStorage(() => localStorage),
       partialize: state => ({ token: state.token }),
     }
   )

@@ -1,12 +1,13 @@
+import { useNavigate } from 'react-router-dom';
 import { Form, Formik } from 'formik';
+
 import MyTextInput from '../common/MyTextInput';
 import { signUpSchema } from '../../utils/validate/signUpSchema';
 import useAuthStore from '../../store/useAuthStore';
-import { useNavigate } from 'react-router-dom';
 
 const AuthSignUpForm = () => {
-  const setAuthInfo = useAuthStore(state => state.setAuthInfo);
   const navigate = useNavigate();
+  const setUserInfo = useAuthStore(state => state.setAuthInfo);
 
   const apiReturn = values => {
     return {
@@ -27,15 +28,17 @@ const AuthSignUpForm = () => {
         try {
           const response = apiReturn(values);
 
-          setAuthInfo(token, name, email, id, role, imageURL);
+          setUserInfo(response);
+
           // После сохранения, можно перенаправить пользователя на нужную страницу
           // Например, на страницу с данными:
-          navigate('/mode');
         } catch (error) {
           console.error(error);
+        } finally {
+          setSubmitting(false);
+          resetForm();
+          navigate('/mode', { replace: true });
         }
-        // setSubmitting(false);
-        // resetForm();
       }}
     >
       <Form className="flex flex-col gap-8">

@@ -10,10 +10,10 @@ export const addGameFormInitialValues = {
 };
 
 export const authInitialState = {
-  id: null,
-  role: null,
-  token: null,
-  name: null,
-  email: null,
-  imageURL: null,
+  id: '',
+  role: '',
+  token: '',
+  name: '',
+  email: '',
+  imageURL: '',
 };
