@@ -9,13 +9,14 @@ const AuthSignUpForm = () => {
   const navigate = useNavigate();
 
   const apiReturn = values => {
-    const answer = {
-      name: values.name,
-      password: values.password,
+    return {
       token: 'dsskj##dsdas',
+      name: values.name,
+      email: values.email,
+      id: 'user-id-placeholder',
+      role: 'user',
+      imageURL: 'placeholder-url',
     };
-
-    return answer;
   };
 
   return (
@@ -26,17 +27,15 @@ const AuthSignUpForm = () => {
         try {
           const response = apiReturn(values);
 
-          if (response) {
-            setAuthInfo(response);
-            // После сохранения, можно перенаправить пользователя на нужную страницу
-            // Например, на страницу с данными:
-            navigate('/mode');
-          }
+          setAuthInfo(token, name, email, id, role, imageURL);
+          // После сохранения, можно перенаправить пользователя на нужную страницу
+          // Например, на страницу с данными:
+          navigate('/mode');
         } catch (error) {
           console.error(error);
         }
-        setSubmitting(false);
-        resetForm();
+        // setSubmitting(false);
+        // resetForm();
       }}
     >
       <Form className="flex flex-col gap-8">

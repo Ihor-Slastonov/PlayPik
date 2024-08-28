@@ -8,3 +8,12 @@ export const addGameFormInitialValues = {
   category: gameCategories ? gameCategories[0] : '',
   type: gameTypes ? gameTypes[1] : '',
 };
+
+export const authInitialState = {
+  id: null,
+  role: null,
+  token: null,
+  name: null,
+  email: null,
+  imageURL: null,
+};

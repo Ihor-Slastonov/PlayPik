@@ -1,14 +1,10 @@
-import { useNavigate } from 'react-router-dom';
-import useAuthStore from '../../store/useAuthStore';
+import { Navigate } from 'react-router-dom';
+import { useAuth } from '../../utils/hooks/useAuth';
 
-const PrivateRoute = ({ children }) => {
-  const navigate = useNavigate();
-  const token = useAuthStore(state => state.token);
-  if (!token) {
-    return navigate('/mode');
-  }
-
-  return children;
+const PrivateRoute = ({ component: Component, redirectTo = '/' }) => {
+  const { isLogged } = useAuth();
+  const shouldRedirect = !isLogged;
+  return shouldRedirect ? <Navigate to={redirectTo} /> : <Component />;
 };
 
 export default PrivateRoute;
