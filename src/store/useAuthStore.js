@@ -13,7 +13,7 @@ const useAuthStore = create(
         return set({ id, role, token, name, email, imageURL });
       },
 
-      clearAuthInfo: () => set(...authInitialState),
+      clearAuthInfo: () => set(authInitialState),
     }),
     {
       name: 'user-storage',

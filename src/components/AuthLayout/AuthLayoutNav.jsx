@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 
 const AuthLayoutNav = () => {
   return (
-    <nav className="grid grid-cols-2 gap-x-4 gap-y-2">
+    <nav className="grid grid-cols-2 gap-x-4 gap-y-3">
       <NavLink
         replace
         to="/login"
