@@ -35,7 +35,7 @@ const AuthSignUpForm = () => {
           />
 
           <button
-            className="btn_inline_green"
+            className="btn_inline_green mt-4 xl:mt-8"
             type="submit"
             disabled={isSubmitting}
           >
