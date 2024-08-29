@@ -15,9 +15,12 @@ const MyTextInput = ({ label, ...props }) => {
           'bg-dark_deep text-light outline-none',
           'hover:border-accent focus:border-accent focus:bg-dark_deep',
           {
-            'border-accent_red': meta.touched && meta.error,
-            'border-accent_green': meta.touched && !meta.error,
+            'border-accent_red focus:border-accent_red':
+              meta.touched && meta.error,
+            'border-accent_green focus:border-accent_green':
+              meta.touched && !meta.error,
             'border-dark_deep': !meta.touched,
+            'error-animation': meta.touched && meta.error,
           }
         )}
         {...field}

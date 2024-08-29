@@ -27,7 +27,7 @@ const AuthLayout = () => {
               Welcome To PlayPik
             </h1>
 
-            <div className="mb-4 xl:mb-8 min-w-[320px]  min-h-[200px] mx-auto xl:w-[500px] duration-500 ease-in-out">
+            <div className="mb-16 xl:mb-24 min-w-[320px]  min-h-[200px] mx-auto xl:w-[500px] duration-500 ease-in-out">
               {isHomePage ? (
                 <AnimatedText />
               ) : (

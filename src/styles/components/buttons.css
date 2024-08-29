@@ -3,6 +3,10 @@
     @apply flex center px-4 py-2 border duration-500 ease-in-out xl:text-lg;
   }
 
+  .btn_disabled {
+    @apply btn border-semi-dark text-light bg-semi-dark pointer-events-none;
+  }
+
   /* Green */
   .btn_outline_green {
     @apply btn border-accent_green text-light bg-transparent

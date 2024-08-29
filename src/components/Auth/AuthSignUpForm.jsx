@@ -17,25 +17,31 @@ const AuthSignUpForm = () => {
         const response = await signUpNewUser(values);
         if (response) {
           resetForm();
-          setSubmitting(false);
           navigate('/mode', { replace: true });
         }
+        setSubmitting(false);
       }}
     >
-      <Form className="flex flex-col gap-8">
-        <MyTextInput label="nickname" name="name" type="text" id="name" />
-        <MyTextInput label="email" name="email" type="email" id="email" />
-        <MyTextInput
-          label="password"
-          name="password"
-          type="password"
-          id="password"
-        />
+      {({ isSubmitting }) => (
+        <Form className="flex flex-col gap-8">
+          <MyTextInput label="nickname" name="name" type="text" id="name" />
+          <MyTextInput label="email" name="email" type="email" id="email" />
+          <MyTextInput
+            label="password"
+            name="password"
+            type="password"
+            id="password"
+          />
 
-        <button className="block" type="submit">
-          Submit
-        </button>
-      </Form>
+          <button
+            className="btn_inline_green"
+            type="submit"
+            disabled={isSubmitting}
+          >
+            Submit
+          </button>
+        </Form>
+      )}
     </Formik>
   );
 };
