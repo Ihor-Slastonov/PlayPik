@@ -16,6 +16,7 @@ const AuthSignUpForm = () => {
       onSubmit={async (values, { setSubmitting, resetForm }) => {
         const response = await signUpNewUser(values);
         if (response) {
+          toast.success('Success');
           resetForm();
           navigate('/mode', { replace: true });
         }
