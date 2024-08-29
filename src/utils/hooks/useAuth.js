@@ -1,7 +1,7 @@
-import useAuthStore from '../../store/useAuthStore';
+import useStore from '../../zustand/useStrore';
 
 export const useAuth = () => {
-  const token = useAuthStore(state => state.token);
+  const token = useStore(state => state.token);
 
   const isLogged = !!token;
 

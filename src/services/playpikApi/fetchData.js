@@ -6,12 +6,8 @@ export const getData = async (url, params) => {
 
     return response?.data;
   } catch (error) {
-    const message = error?.response?.data
-      ? error.response.message
-      : error.message;
-
-    console.error(`Error fetching data to ${url}:`, message);
-    return error;
+    const message = error?.response?.data.message;
+    throw new Error(message || 'Bad request');
   }
 };
 
@@ -21,12 +17,8 @@ export const postData = async (url, data, params) => {
 
     return response?.data;
   } catch (error) {
-    const message = error?.response?.data
-      ? error.response.message
-      : error.message;
-
-    console.error(`Error fetching data to ${url}:`, message);
-    return error;
+    const message = error?.response?.data.message;
+    throw new Error(message || 'Bad request');
   }
 };
 
@@ -35,12 +27,8 @@ export const putData = async (url, data, params) => {
     const response = await playpikApi.put(url, data, params);
     return response?.data;
   } catch (error) {
-    const message = error?.response?.data
-      ? error.response.message
-      : error.message;
-
-    console.error(`Error fetching data to ${url}:`, message);
-    return error;
+    const message = error?.response?.data.message;
+    throw new Error(message || 'Bad request');
   }
 };
 
@@ -49,6 +37,7 @@ export const deleteData = async (url, params) => {
     const response = await playpikApi.delete(url, { params });
     return response?.data;
   } catch (error) {
-    console.error('Error fetching data');
+    const message = error?.response?.data.message;
+    throw new Error(message || 'Bad request');
   }
 };
