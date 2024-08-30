@@ -2,12 +2,22 @@ import { Form, Formik } from 'formik';
 import { signInSchema } from '../../utils/validate/signUpSchema';
 
 import MyTextInput from '../common/MyTextInput';
+import { signInUser } from '../../zustand/auth/authOperations';
 
 const AuthSignInForm = () => {
   return (
     <Formik
       initialValues={{ email: '', password: '' }}
       validationSchema={signInSchema}
+      onSubmit={async (values, { setSubmitting, resetForm }) => {
+        const response = await signInUser(values);
+        if (response) {
+          toast.success('Success');
+          resetForm();
+          navigate('/mode', { replace: true });
+        }
+        setSubmitting(false);
+      }}
     >
       {({ isSubmitting }) => (
         <Form className="flex flex-col gap-8">
