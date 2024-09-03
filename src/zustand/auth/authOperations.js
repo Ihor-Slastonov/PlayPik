@@ -32,16 +32,17 @@ export const refreshUser = async navigate => {
   const { user, setIsLoggedIn } = useStore.getState();
 
   if (!user?.token) {
-    navigate('/');
+    // navigate('/login');
+    setIsLoggedIn(false);
     return;
   }
 
   try {
     const response = await postData('/auth/verifyUser', null, null, user.token);
     if (response?.data) {
-      setIsLoggedIn(true); // Обновляем только нужное состояние
+      setIsLoggedIn(true);
     } else {
-      setIsLoggedIn(false); // Если нет данных, пользователь не залогинен
+      setIsLoggedIn(false);
     }
   } catch (error) {
     toast.error('Invalid token');
