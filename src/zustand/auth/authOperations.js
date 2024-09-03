@@ -29,17 +29,23 @@ export const signInUser = async values => {
 };
 
 export const refreshUser = async navigate => {
-  const { user } = useStore.getState();
+  const { user, setIsLoggedIn } = useStore.getState();
 
-  if (!user.token) {
-    return navigate('/');
+  if (!user?.token) {
+    navigate('/');
+    return;
   }
 
   try {
     const response = await postData('/auth/verifyUser', null, null, user.token);
-    if (!response.data) return;
-    useStore.setState(state => (state.isLoggedIn = true));
+    if (response?.data) {
+      setIsLoggedIn(true); // Обновляем только нужное состояние
+    } else {
+      setIsLoggedIn(false); // Если нет данных, пользователь не залогинен
+    }
   } catch (error) {
-    return;
+    toast.error('Invalid token');
+    setIsLoggedIn(false);
+    navigate('/login');
   }
 };

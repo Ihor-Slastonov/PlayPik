@@ -11,10 +11,12 @@ const useStore = create(
     {
       name: 'auth-storage',
       storage: createJSONStorage(() => localStorage),
-      partialize: state => ({
-        user: state.user,
-        isLoggedIn: state.isLoggedIn,
-      }),
+      onRehydrateStorage: state => {
+        console.log('Rehydrating state:', state);
+      },
+      onRehydrateStorageError: error => {
+        console.error('Rehydration error:', error);
+      },
     }
   )
 );

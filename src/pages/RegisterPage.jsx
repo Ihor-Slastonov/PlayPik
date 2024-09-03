@@ -11,7 +11,9 @@ const RegisterPage = () => {
       {!isFormSend ? (
         <AuthSignUpForm setIsFormSend={setIsFormSend} />
       ) : (
-        <p>Check your email</p>
+        <p className="mt-28 font-bold text-center text-accent capitalize">
+          Check your email
+        </p>
       )}
     </>
   );

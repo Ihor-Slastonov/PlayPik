@@ -1,8 +1,5 @@
 import useStore from '../useStrore';
 
-const { token, isRefreshing, isLoggedIn } = useStore.getState();
-
-export const selectToken = () => token;
-
-export const selectIsRefreshing = () => isRefreshing;
-export const selectIsLoggedIn = () => isLoggedIn;
+export const selectUser = () => useStore(state => state.user);
+export const selectIsRefreshing = () => useStore(state => state.isRefreshing);
+export const selectIsLoggedIn = () => useStore(state => state.isLoggedIn);
