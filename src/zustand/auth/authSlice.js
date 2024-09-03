@@ -1,10 +1,13 @@
 import { authInitialState } from '../../utils/constans/initialValues';
 
 export const authSlice = set => ({
-  setAuthInfo: user => {
-    const { id, role, token, name, email, imageURL } = user;
-    return set({ id, role, token, name, email, imageURL });
-  },
+  ...authInitialState,
+
+  setIsRefreshing: value => set({ isRefreshing: value }),
+
+  setIsLoggedIn: value => set({ isLoggedIn: value }),
+
+  setAuthInfo: user => set({ user }),
 
   clearAuthInfo: () => set(authInitialState),
 });

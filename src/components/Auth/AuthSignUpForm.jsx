@@ -6,7 +6,7 @@ import MyTextInput from '../common/MyTextInput';
 import { signUpSchema } from '../../utils/validate/signUpSchema';
 import { signUpNewUser } from '../../zustand/auth/authOperations';
 
-const AuthSignUpForm = () => {
+const AuthSignUpForm = ({ setIsFormSend }) => {
   const navigate = useNavigate();
 
   return (
@@ -18,7 +18,7 @@ const AuthSignUpForm = () => {
         if (response) {
           toast.success('Success');
           resetForm();
-          navigate('/mode', { replace: true });
+          setIsFormSend(true);
         }
         setSubmitting(false);
       }}

@@ -1,9 +1,12 @@
-import useStore from '../../zustand/useStrore';
+import {
+  selectIsRefreshing,
+  selectIsLoggedIn,
+} from '../../zustand/auth/authSelectors';
+
 
 export const useAuth = () => {
-  const token = useStore(state => state.token);
+  const isLoggedIn = selectIsLoggedIn();
+  const isRefreshing = selectIsRefreshing();
 
-  const isLogged = !!token;
-
-  return { isLogged };
+  return { isLoggedIn, isRefreshing };
 };
