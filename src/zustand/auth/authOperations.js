@@ -1,6 +1,6 @@
 import toast from 'react-hot-toast';
 import { postData } from '../../services/playpikApi/fetchData';
-import useStore from '../useStrore';
+import useStore from '../usePlaypikStore';
 
 export const signUpNewUser = async values => {
   try {

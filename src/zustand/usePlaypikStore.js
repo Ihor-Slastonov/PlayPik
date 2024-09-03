@@ -3,7 +3,7 @@ import { persist, createJSONStorage } from 'zustand/middleware';
 
 import { authSlice } from './auth/authSlice';
 
-const useStore = create(
+const usePlaypikStore = create(
   persist(
     (...a) => ({
       ...authSlice(...a),
@@ -12,13 +12,17 @@ const useStore = create(
       name: 'auth-storage',
       storage: createJSONStorage(() => localStorage),
       onRehydrateStorage: state => {
-        console.log('Rehydrating state:', state);
-      },
-      onRehydrateStorageError: error => {
-        console.error('Rehydration error:', error);
+        console.log('hydration starts');
+        return (state, error) => {
+          if (error) {
+            console.error('an error happened during hydration', error);
+          } else {
+            console.log('hydration finished', state);
+          }
+        };
       },
     }
   )
 );
 
-export default useStore;
+export default usePlaypikStore;

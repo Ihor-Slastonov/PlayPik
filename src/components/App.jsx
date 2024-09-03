@@ -6,9 +6,11 @@ import ModeLayout from './ModeLayout/ModeLayout';
 
 import NotFound from '../pages/NotFound';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
+import RestrictedRoute from './RestrictedRoute/RestrictedRoute';
 
 import { selectIsRefreshing } from '../zustand/auth/authSelectors';
 import { refreshUser } from '../zustand/auth/authOperations';
+import useHydration from '../utils/hooks/useHydration';
 
 const LoginPage = lazy(() => import('../pages/LoginPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage'));
@@ -18,18 +20,34 @@ const TournamentPage = lazy(() => import('../pages/TournamentPage'));
 const App = () => {
   const navigate = useNavigate();
   const isRefreshing = selectIsRefreshing();
+  const hydrated = useHydration();
 
   useEffect(() => {
-    refreshUser(navigate);
-  }, []);
+    if (hydrated) {
+      refreshUser(navigate);
+    }
+  }, [hydrated, navigate]);
+  if (!hydrated) {
+    return <p>Loading...</p>;
+  }
 
   return isRefreshing ? (
     'Fetching user data'
   ) : (
     <Routes>
       <Route path="/" element={<AuthLayout />}>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute commponent={LoginPage} redirectTo="/mode" />
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute commponent={RegisterPage} redirectTo="/mode" />
+          }
+        />
       </Route>
 
       <Route path="/mode" element={<ModeLayout />}>
