@@ -32,7 +32,6 @@ export const refreshUser = async navigate => {
   const { user, setIsLoggedIn } = useStore.getState();
 
   if (!user?.token) {
-    // navigate('/login');
     setIsLoggedIn(false);
     return;
   }
@@ -47,6 +46,5 @@ export const refreshUser = async navigate => {
   } catch (error) {
     toast.error('Invalid token');
     setIsLoggedIn(false);
-    navigate('/login');
   }
 };
