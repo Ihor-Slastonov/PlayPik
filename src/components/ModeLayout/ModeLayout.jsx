@@ -7,7 +7,11 @@ const ModeLayout = () => {
     <>
       <Header />
       <Suspense fallback={<div>Loading...</div>}>
-        <Outlet />
+        <main>
+          <div className="myContainer">
+            <Outlet />
+          </div>
+        </main>
       </Suspense>
     </>
   );

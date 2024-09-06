@@ -1,35 +1,30 @@
 import { useState } from 'react';
 
-import Modal from '../Modal/Modal';
-import PickGameCard from './PickGameCard';
+// import Modal from '../Modal/Modal';
+// import PickGameCard from './PickGameCard';
 import PickGameBtn from './PickGameBtn';
-import PickGameSkeleton from './PickGameSkeleton';
-import PickGameConfirmBtn from './PickGameConfirmBtn';
-import Fact from '../Fact/Fact';
+// import PickGameSkeleton from './PickGameSkeleton';
+// import PickGameConfirmBtn from './PickGameConfirmBtn';
+// import Fact from '../Fact/Fact';
 
-import { usePlayPik } from '../../utils/hooks/usePlayPik';
 import { pickGame } from '../../utils/pickGame';
 
 import sound from '../../assets/sound/kudasai2.mp3';
-import { saveLastPickedGame } from '../../services/playpikApi/games';
 
 const PickGame = () => {
   const [randomGame, setRandomGame] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
-
-  const { games, setGames } = usePlayPik();
 
   const audio = new Audio(sound);
 
   const pickRandomGame = () => {
     const pickedGame = pickGame(games);
     setRandomGame(pickedGame);
-    saveLastPickedGame(pickedGame);
   };
 
   const handleClick = () => {
-    audio.play();
-    pickRandomGame();
+    // audio.play();
+    // pickRandomGame();
     setIsOpen(true);
   };
 
@@ -41,7 +36,7 @@ const PickGame = () => {
     <>
       <PickGameBtn handleClick={handleClick} />
 
-      <Modal
+      {/* <Modal
         containerId="modal_playPick"
         isOpen={isOpen}
         closeModal={handleClose}
@@ -57,7 +52,7 @@ const PickGame = () => {
           setGames={setGames}
         />
         <PickGameConfirmBtn type="decline" close={handleClose} />
-      </Modal>
+      </Modal> */}
     </>
   );
 };

@@ -1,0 +1,5 @@
+@layer components {
+  .myContainer {
+    @apply container mx-auto px-4 xl:px-8;
+  }
+}
