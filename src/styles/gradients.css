@@ -1,0 +1,9 @@
+.gradient_rasta {
+  @apply from-accent_green via-accent to-accent_red;
+}
+
+.beforeLine_rasta {
+  @apply before:absolute before:bottom-0 before:z-[2] before:block
+    before:h-[1px] before:w-full before:bg-gradient-to-r
+    before:from-accent_green before:via-accent before:to-accent_red;
+}
