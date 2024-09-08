@@ -1,4 +1,4 @@
-import React from 'react';
+import useWindowSize from '../../utils/hooks/useWindowSize';
 
 import HeaderBanner from './HeaderBanner';
 import Burger from '../Burger/Burger';
@@ -7,6 +7,7 @@ import PickGame from '../PickGame/PickGame';
 import HeaderBtnGlow from './HeaderBtnGlow';
 
 const Header = () => {
+  const { isMobile } = useWindowSize();
   return (
     <header
       className="beforeLine_rasta relative flex h-[100px] 
@@ -15,7 +16,7 @@ const Header = () => {
       <div className="myContainer">
         <HeaderBanner />
         <HeaderBtnGlow />
-        <Burger />
+        {isMobile && <Burger />}
 
         <PickGame />
       </div>
