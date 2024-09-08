@@ -12,12 +12,11 @@ const Rocket = props => {
   const [isPlayed, setIsPlayed] = useState(true);
   const rocketRef = useRef();
   const { nodes, materials } = useGLTF(rocketScene);
+  const timeline = gsap.timeline();
 
   const animateOnStart = () => {
     const rocketPosition = rocketRef.current.position;
     const rocketRotation = rocketRef.current.rotation;
-
-    const timeline = gsap.timeline();
 
     timeline
       .to([rocketPosition, rocketRotation], {

@@ -2,18 +2,18 @@ import PropTypes from 'prop-types';
 
 import { XMarkIcon } from '@heroicons/react/24/solid';
 
-const ModalCloseBtn = ({ closeModal }) => {
+const ModalCloseBtn = ({ onClose }) => {
   return (
     <button
-      onClick={closeModal}
-      className="absolute top-0 right-0
-              w-8 h-8 flex items-center justify-center
-               group rounded-full border border-semi-dark
-               hover:border-accent duration-500"
+      onClick={onClose}
+      className="group absolute right-2
+              top-2 flex h-8 w-8 items-center
+               justify-center rounded-full border border-accent_red
+               duration-500 hover:border-accent"
     >
       <XMarkIcon
-        className="text-semi-dark w-6 h-6 
-              group-hover:text-accent duration-500"
+        className="h-6 w-6 text-accent_red
+              duration-500 group-hover:text-accent"
       />
     </button>
   );
@@ -22,5 +22,5 @@ const ModalCloseBtn = ({ closeModal }) => {
 export default ModalCloseBtn;
 
 ModalCloseBtn.propTypes = {
-  closeModal: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
 };
