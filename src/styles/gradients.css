@@ -2,8 +2,21 @@
   @apply from-accent_green via-accent to-accent_red;
 }
 
+.gradient_indico {
+  @apply from-dark_deep via-violet_deep to-violet_dark;
+}
+
+.gradient_grey {
+  @apply from-black to-dark_deep;
+}
+
 .beforeLine_rasta {
   @apply before:absolute before:bottom-0 before:z-[2] before:block
     before:h-[1px] before:w-full before:bg-gradient-to-r
     before:from-accent_green before:via-accent before:to-accent_red;
+}
+
+.afterVerLine_rasta {
+  @apply after:absolute after:top-0 after:z-[2] after:block after:h-full after:w-[1px]
+  after:bg-gradient-to-b after:from-accent_green after:via-accent after:to-accent_red;
 }

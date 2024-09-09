@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <header
       className="beforeLine_rasta relative flex h-[100px] 
-    items-center justify-center py-2.5 xl:h-20"
+    items-center justify-center py-2.5 xl:h-[120px]"
     >
       <div className="myContainer">
         <HeaderBanner />

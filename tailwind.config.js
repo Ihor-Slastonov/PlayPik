@@ -29,6 +29,10 @@ export default {
       myPlay: ['MyPlay', 'sans-serif'],
     },
     extend: {
+      gridTemplateColumns: {
+        layout: '350px 1fr',
+      },
+
       boxShadow: {
         center: '0px 0px 20px 4px #000000',
       },
