@@ -9,7 +9,7 @@ const ModalCloseBtn = ({ onClose }) => {
       className="group absolute right-2
               top-2 flex h-8 w-8 items-center
                justify-center rounded-full border border-accent_red
-               duration-500 hover:border-accent"
+               duration-500 hover:border-accent z-[4]"
     >
       <XMarkIcon
         className="h-6 w-6 text-accent_red

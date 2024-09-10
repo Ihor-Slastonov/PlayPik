@@ -10,6 +10,11 @@
   @apply from-black to-dark_deep;
 }
 
+.beforeLine_green {
+  @apply before:absolute before:bottom-0 before:z-[2] before:block
+    before:h-[1px] before:w-full before:bg-accent_green;
+}
+
 .beforeLine_rasta {
   @apply before:absolute before:bottom-0 before:z-[2] before:block
     before:h-[1px] before:w-full before:bg-gradient-to-r
