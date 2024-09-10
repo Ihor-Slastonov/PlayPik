@@ -1,5 +1,7 @@
-import useStore from '../usePlaypikStore';
+import usePlaypikStore from '../usePlaypikStore';
 
-export const selectUser = () => useStore(state => state.user);
-export const selectIsRefreshing = () => useStore(state => state.isRefreshing);
-export const selectIsLoggedIn = () => useStore(state => state.isLoggedIn);
+export const selectUser = () => usePlaypikStore(state => state.user);
+export const selectIsRefreshing = () =>
+  usePlaypikStore(state => state.isRefreshing);
+export const selectIsLoggedIn = () =>
+  usePlaypikStore(state => state.isLoggedIn);

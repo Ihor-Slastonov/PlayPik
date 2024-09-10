@@ -5,7 +5,7 @@ import Sidebar from '../Sidebar/Sidebar';
 
 const ModeLayout = () => {
   return (
-    <div className="xl:grid-cols-layout grid min-h-screen grid-cols-1">
+    <div className="grid min-h-screen grid-cols-1 xl:grid-cols-layout">
       <Sidebar />
 
       <div>

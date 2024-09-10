@@ -8,6 +8,11 @@ import NotFound from '../pages/NotFound';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import RestrictedRoute from './RestrictedRoute/RestrictedRoute';
 
+import {
+  selectCategories,
+  selectFetchFilters,
+  selectTypes,
+} from '../zustand/filters/filtersSelectors';
 import { selectIsRefreshing } from '../zustand/auth/authSelectors';
 import { refreshUser } from '../zustand/auth/authOperations';
 import useHydration from '../utils/hooks/useHydration';
@@ -22,9 +27,18 @@ const App = () => {
   const isRefreshing = selectIsRefreshing();
   const hydrated = useHydration();
 
+  const categories = selectCategories();
+  const types = selectTypes();
+  const fetchFilters = selectFetchFilters();
+
   useEffect(() => {
     if (hydrated) {
       refreshUser(navigate);
+
+      if (!categories.length || !types.length) {
+        console.log('need to fetch');
+        fetchFilters();
+      }
     }
   }, [hydrated, navigate]);
   if (!hydrated) {

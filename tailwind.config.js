@@ -5,6 +5,12 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     colors: {
+      green: {
+        light: '#28df9d',
+        DEFAULT: '#03c988',
+        dark: '#00a16d',
+      },
+
       black: colors.black,
       white: colors.white,
       transparent: colors.transparent,
