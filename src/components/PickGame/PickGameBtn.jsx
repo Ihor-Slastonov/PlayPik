@@ -2,12 +2,18 @@ import { PropTypes } from 'prop-types';
 
 const PickGameBtn = ({ handleClick }) => {
   return (
-    <button
-      type="button"
-      className="relative z-[4] mx-auto block h-16 w-36
+    <div className="relative mx-auto block h-16 w-36">
+      <button
+        type="button"
+        className=" mx-auto block h-full w-full
       rounded-md bg-[url('/button-2.webp')] bg-cover bg-center bg-no-repeat"
-      onClick={handleClick}
-    ></button>
+        onClick={handleClick}
+      ></button>
+      <div
+        className="gradient_rasta absolute inset-0 -z-[1] 
+      bg-gradient-to-r blur-md"
+      />
+    </div>
   );
 };
 
