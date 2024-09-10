@@ -5,7 +5,7 @@ const UserAvatar = () => {
   const { imageURL } = selectUser();
 
   return (
-    <div className="size-24 rounded-full bg-green p-1 shadow-md shadow-black">
+    <div className="size-16 rounded-full bg-green p-1 shadow-md shadow-black xl:size-24">
       <div className="size-full rounded-full">
         <Img
           src={imageURL}
