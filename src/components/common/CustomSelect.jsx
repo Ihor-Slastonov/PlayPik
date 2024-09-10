@@ -35,8 +35,8 @@ const CustomSelect = ({ values, defaultValue = '', foo, color = 'yellow' }) => {
         type="button"
         onClick={toggleSelectList}
         className={clsx(
-          `flex items-center gap-2 justify-between min-w-36 p-2 
-          border rounded-md shadow-sm bg-dark uppercase duration-500 ease-in-out`,
+          `flex min-w-36 items-center justify-between gap-2 rounded-md 
+          border bg-dark p-2 uppercase shadow-sm duration-500 ease-in-out`,
           {
             'hover:border-accent hover:shadow-accent': color === 'yellow',
             'hover:border-accent_green hover:shadow-accent_green':
@@ -54,15 +54,15 @@ const CustomSelect = ({ values, defaultValue = '', foo, color = 'yellow' }) => {
       {isOpen && (
         <ul
           className="absolute left-0 
-          flex flex-col w-full 
-        bg-dark border rounded-md shadow-md uppercase divide-y"
+          flex w-full flex-col 
+        divide-y rounded-md border bg-dark uppercase shadow-md"
         >
           {values?.map((value, idx) => (
             <li
               key={idx}
               onClick={() => handleSelectItem(value)}
-              className={`cursor-pointer p-2 hover:bg-semi-dark 
-              first-of-type:rounded-t-md last-of-type:rounded-b-md
+              className={`cursor-pointer p-2 first-of-type:rounded-t-md 
+              last-of-type:rounded-b-md hover:bg-semi-dark
               ${value === currentValue ? 'bg-semi-dark' : 'bg-dark'} `}
             >
               {value}

@@ -17,7 +17,7 @@ const Header = () => {
         <HeaderBanner />
         {isMobile && <Burger />}
 
-        <div className="relative z-[4] flex flex-col gap-4">
+        <div className="relative z-[4] flex flex-col gap-8 border">
           <PickGame />
           {!isMobile && <Filter />}
         </div>

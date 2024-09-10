@@ -6,4 +6,17 @@ const selectTypes = () => usePlaypikStore(state => state.types);
 
 const selectFetchFilters = () => usePlaypikStore(state => state.fetchFilters);
 
-export { selectCategories, selectTypes, selectFetchFilters };
+const selectedCategory = () => usePlaypikStore(state => state.selectedCategory);
+
+const selectedType = () => usePlaypikStore(state => state.selectedType);
+
+const filterGames = () => usePlaypikStore(state => state.filterGames);
+
+export {
+  selectCategories,
+  selectTypes,
+  selectFetchFilters,
+  selectedCategory,
+  selectedType,
+  filterGames,
+};

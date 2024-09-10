@@ -20,8 +20,8 @@ export default {
       violet_dark_transparent: 'rgba(23, 21, 59, 0.8)',
 
       dark_deep: '#1E201E',
-      dark: '#222831',
-      'semi-dark': '#393E46',
+      dark: '#30322f',
+      'semi-dark': '#4e534e',
       accent: '#FFD369',
       accent_green: '#03C988',
       accent_red: '#E94560',
