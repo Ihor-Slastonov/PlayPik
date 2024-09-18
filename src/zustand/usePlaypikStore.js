@@ -3,12 +3,14 @@ import { persist, createJSONStorage } from 'zustand/middleware';
 
 import { authSlice } from './auth/authSlice';
 import { filtersSlice } from './filters/filtersSlice';
+import { gamesSlice } from './games/gamesSlice';
 
 const usePlaypikStore = create(
   persist(
     (...a) => ({
       ...authSlice(...a),
       ...filtersSlice(...a),
+      ...gamesSlice(...a),
     }),
     {
       name: 'auth-storage',

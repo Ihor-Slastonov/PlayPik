@@ -1,30 +1,30 @@
 @layer components {
   .card__container {
-    @apply w-[220px] h-[340px] relative 
-    border-2 border-dark rounded-xl
-    shadow-lg
-    overflow-hidden;
+    @apply relative h-[400px] w-[340px] overflow-hidden rounded-xl
+    border-2 border-dark shadow-lg
+    xl:h-[340px]
+    xl:w-[270px];
   }
 
   .card__backSide {
     @apply card__container 
-    bg-dark block bg-[url('/button-2.webp')] bg-cover bg-no-repeat bg-center;
+    block bg-dark bg-[url('/button-2.webp')] bg-cover bg-center bg-no-repeat;
   }
 
   .card__image {
-    @apply w-full h-full object-cover;
+    @apply h-full w-full object-cover;
   }
 
   .card__title {
     @apply absolute bottom-0 
-    w-full h-10
-    flex items-center justify-center 
-    text-xl
-    text-light bg-tr_dark;
+    flex h-10
+    w-full items-center justify-center 
+    bg-tr_dark
+    text-xl text-light;
   }
   .card__label {
-    @apply flex items-center justify-center text-xl font-bold uppercase text-semi-dark
-    h-8 p-2 rounded-s-lg;
+    @apply flex h-8 items-center justify-center rounded-s-lg p-2 text-xl
+    font-bold uppercase text-semi-dark;
   }
   .card__label-category {
     @apply card__label min-w-20 bg-accent_green;
@@ -42,9 +42,9 @@
   }
 
   .card__deleteBtn {
-    @apply w-8 h-8
-        rounded-md text-accent_red bg-dark
-      flex items-center justify-center border border-dark
-      hover:border-accent_red duration-500 ease-in-out;
+    @apply flex h-8
+        w-8 items-center justify-center
+      rounded-md border border-dark bg-dark text-accent_red
+      duration-500 ease-in-out hover:border-accent_red;
   }
 }

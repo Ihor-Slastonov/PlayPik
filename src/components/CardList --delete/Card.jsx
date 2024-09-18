@@ -35,11 +35,6 @@ const Card = ({
           )}
         </span>
         <CardFavoriteBtn favorite={favorite} id={id} />
-        {/* This is rating for future */}
-        {/* <span className="card__label-rating opacity-0 group-hover:opacity-100 duration-500 ease-in-out">
-          <StarIcon className="size-6 text-accent mr-1" />
-          {rating}
-        </span> */}
       </div>
 
       <div className="absolute top-4 left-1 flex flex-col gap-2">
