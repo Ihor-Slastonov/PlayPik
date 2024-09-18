@@ -9,11 +9,11 @@ export const LogoutUserBtn = () => {
   return (
     <button
       type="button"
-      className="center absolute bottom-4 right-4 flex size-10 text-semi-dark 
-       duration-500 ease-in-out hover:text-accent_red
-       focus:text-accent_red xl:left-4 xl:top-4"
+      className="center absolute right-24 top-4 flex size-14 text-semi-dark duration-500 
+       ease-in-out hover:text-accent_red focus:text-accent_red
+       xl:left-4 xl:top-4 xl:size-10"
     >
-      <ArrowLeftStartOnRectangleIcon className="size-8" />
+      <ArrowLeftStartOnRectangleIcon className="size-10" />
     </button>
   );
 };
