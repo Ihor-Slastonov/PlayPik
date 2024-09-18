@@ -2,7 +2,7 @@ import User from '../User/User';
 
 const SideBarMenu = () => {
   return (
-    <div>
+    <div className='sticky top-0'>
       <User />
     </div>
   );

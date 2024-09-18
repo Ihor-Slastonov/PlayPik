@@ -3,7 +3,7 @@ import { Img } from 'react-image';
 import { UserIcon, UsersIcon } from '@heroicons/react/24/solid';
 
 const GameCard = ({ game, category, type }) => {
-  const { id, title, imageUrl, videoUrl } = game;
+  const { title, imageUrl, } = game;
 
   return (
     <li className="card__container">

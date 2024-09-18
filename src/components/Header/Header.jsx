@@ -10,8 +10,8 @@ const Header = () => {
   const { isMobile } = useWindowSize();
   return (
     <header
-      className="beforeLine_rasta relative flex h-[100px] 
-    items-center justify-center py-2.5 shadow-md shadow-black xl:h-[200px]"
+      className="beforeLine_rasta sticky top-0 flex h-[100px] 
+    items-center justify-center py-2.5 shadow-md shadow-black xl:h-[200px] z-10"
     >
       <div className="myContainer">
         <HeaderBanner />
