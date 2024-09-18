@@ -39,6 +39,18 @@ const Modal = ({ isOpen, onClose, children }) => {
       { y: '100%', duration: 0.5, ease: 'power2.out' }
     );
   });
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isOpen]);
+
   return (
     <Portal containerId="modal-root">
       <CSSTransition
